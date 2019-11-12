@@ -1,0 +1,16 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+ZPREZTODIR=$HOME/dotfiles
+# Source Prezto.
+if [[ -s "${ZPREZTODIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZPREZTODIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+## load .bashrc
+source ~/.bashrc
