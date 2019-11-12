@@ -4,6 +4,7 @@ DOTPATH=~/dotfiles
 
 for f in .??*
 do
+  [[ "$f" == ".zprezto" ]] && continue
   [[ "$f" == ".git" ]] && continue
   [[ "$f" == ".DS_Store" ]] && continue
 
