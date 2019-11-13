@@ -15,5 +15,3 @@ alias cdiff='colordiff -y'
 alias cdiffscl='colordiff -y --suppress-common-lines'
 alias less='less -R'
 alias du='du -h'
-
-export PYHTONPATH=$PYTHTONPATH:~/Excercise/python/venv/machine_learning/

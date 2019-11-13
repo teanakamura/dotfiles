@@ -12,5 +12,5 @@ if [[ -s "${ZPREZTODIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-## load .bashrc
-source ~/.bashrc
+## load aliases
+source ~/.sh_conf/aliases
