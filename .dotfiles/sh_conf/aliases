@@ -16,4 +16,5 @@ alias cdiff='colordiff -y'
 alias cdiffscl='colordiff -y --suppress-common-lines'
 alias less='less -R'
 alias du='du -h'
-alias grep='grep -rn'
+alias grepn='grep -rn'
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"

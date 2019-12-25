@@ -1,6 +1,7 @@
 set nocompatible
 set encoding=utf-8
 set cursorline
+highlight CursorLine guibg=NONE
 "set cursorcolumn
 set virtualedit=block,onemore
 set showcmd
