@@ -18,3 +18,5 @@ alias less='less -R'
 alias du='du -h'
 alias grepn='grep -rn'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias tarc='tar -zcvf'
+alias tarx='tar -zxvf'
