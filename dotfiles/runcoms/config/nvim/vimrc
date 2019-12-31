@@ -1,0 +1,152 @@
+set nocompatible
+set encoding=utf-8
+set cursorline
+"set cursorcolumn
+set virtualedit=block,onemore
+set showcmd
+
+"----------------------------
+" 検索
+"----------------------------
+" 検索結果をハイライト
+set hlsearch
+
+"----------------------------
+" 表示
+"----------------------------
+" 対応する括弧をハイライト
+set showmatch matchtime=1
+" 不可視文字を表示する
+" set list
+set listchars=tab:~\ ,trail:~
+
+set laststatus=2
+hi Comment ctermfg=3
+" タブをスペースに変換
+set expandtab
+" タブ入力時のスペースの数
+set softtabstop=2
+" タブの表示幅
+set tabstop=2
+" 自動インデントのスペース幅
+set shiftwidth=2
+set guioptions+=a
+set smartindent
+set cindent
+set number
+syntax enable
+"set clipboard=unnamed,autoselect
+set mouse=a
+
+"----------------------------
+" 変更補助
+"----------------------------
+set backspace=indent,eol,start
+
+set encoding=utf-8
+"set curorline
+"set cursorcolumn
+set virtualedit=block,onemore
+set showcmd
+
+"----------------------------
+" 検索
+"----------------------------
+" 検索結果をハイライト
+set hlsearch
+
+"----------------------------
+" 表示
+"----------------------------
+" 対応する括弧をハイライト
+set showmatch matchtime=1
+" 不可視文字を表示する
+" set list
+set listchars=tab:~\ ,trail:~
+
+set laststatus=2
+hi Comment ctermfg=3
+" タブをスペースに変換
+set expandtab
+" タブ入力時のスペースの数
+set softtabstop=2
+" タブの表示幅
+set tabstop=2
+" 自動インデントのスペース幅
+set shiftwidth=2
+set guioptions+=a
+set smartindent
+set cindent
+set number
+syntax enable
+"set clipboard=unnamed,autoselect
+set mouse=a
+
+"----------------------------
+" 変更補助
+"----------------------------
+set backspace=indent,eol,start
+
+"----------------------------
+" Key Mapping
+"----------------------------
+" registerに保存しない削除
+vnoremap d "_d
+nnoremap d "_d
+vnoremap D "_D
+nnoremap D "_D
+vnoremap x "_x
+nnoremap x "_x
+vnoremap s "_s
+nnoremap s "_s
+vnoremap c "_c
+nnoremap c "_c
+inoremap <C-g> <C-d>
+inoremap <C-d> <C-w>
+
+" registerに保存する切り取り
+nnoremap t d
+vnoremap t x
+nnoremap tt dd
+nnoremap T D
+
+" window, tab, buffer操作
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sw <C-w>w
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap s> <C-w>>
+nnoremap s< <C-w><
+nnoremap s+ <C-w>+
+nnoremap s- <C-w>-
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+"nnoremap sO <C-w>=
+nnoremap so <C-w>_<C-w>|
+nnoremap sn gt
+nnoremap sp gT
+nnoremap ss :<C-u>split<CR>
+nnoremap sv :<C-u>vsplit<CR>
+nnoremap st :<C-u>tabnew<CR>
+"nnoremap sT :<C-u>Unite tab<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap sQ :<C-u>bd<CR>
+"nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+"nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+
+"call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+"call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+"call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+"call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+"call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+"call submode#map('bufmove', 'n', '', '<', '<C-w><')
+"call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+"call submode#map('bufmove', 'n', '', '-', '<C-w>-')
