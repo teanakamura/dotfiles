@@ -2,6 +2,6 @@
 
 dotfiles/runcoms/vim/.netrwhist
 dotfiles/runcoms/cache/*
-!dotfiles/runcoms/cache/installer.sh
+!dotfiles/runcoms/cache/dein_installer.sh
 dotfiles/runcoms/config/*
 !dotfiles/runcoms/config/nvim

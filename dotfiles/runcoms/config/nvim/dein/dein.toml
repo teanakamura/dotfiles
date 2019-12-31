@@ -11,4 +11,6 @@ hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
 
 [[plugins]] 
 repo = 'Shougo/deoplete.nvim'
+if = 'has("python3")'
 hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
+

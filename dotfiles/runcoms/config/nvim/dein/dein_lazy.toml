@@ -2,6 +2,7 @@
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 if = 'has("nvim")'
+if = 'has("python3")'
 hook_source = 'source ~/.config/nvim/plugins/denite.vim'
 
 [[plugins]]
