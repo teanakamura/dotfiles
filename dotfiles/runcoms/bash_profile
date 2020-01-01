@@ -1,3 +1,4 @@
 source ~/.bashrc
 
 source ~/.sh_conf/envs
+[ -f ~/.local_conf/local_profile ] && source ~/.local_conf/local_profile

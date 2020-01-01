@@ -1,3 +1,2 @@
 source ~/.sh_conf/aliases
-
-#exec /usr/bin/zsh
+[ -f ~/.local_conf/localrc ] && source ~/.local_conf/localrc
