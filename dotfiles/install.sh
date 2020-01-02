@@ -14,7 +14,7 @@ do
   
   echo ".$f"
   
-  if [[ "$f" == "cache" ]]
+  if [[ "$f" == "cache" ]] || [[ "$f" == "config" ]]
   then
     cd $f
     mkdir $HOME/.$f
