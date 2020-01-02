@@ -23,7 +23,7 @@ mkdir dein
 source dein_installer.sh ~/.cache/dein
 ```
 ```vim
-## neovimを起動して
+"" neovimを起動して
 :checkhealth
 :call dein#install()
 :call dein#remote_plugins()  "python3のpynvimが必要
