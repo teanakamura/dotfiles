@@ -20,6 +20,7 @@ do
     mkdir $HOME/.$f
     for nest in ?*
     do
+      [[ -d "$HOME/.$f/$nest" ]] && mv "$HOME/.$f/$nest" "$HOME/.$f/${nest}_mv"
       ln -snfv "$DOT_DIR/$f/$nest" "$HOME/.$f/$nest"
     done
     cd ../
