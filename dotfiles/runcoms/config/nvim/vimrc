@@ -68,20 +68,22 @@ hi Comment ctermfg=3
 " registerに保存しない削除
 vnoremap d "_d
 nnoremap d "_d
-vnoremap D "_D
-nnoremap D "_D
+vnoremap D "_dd
+nnoremap D "_dd
 vnoremap x "_x
 nnoremap x "_x
 vnoremap s "_s
 nnoremap s "_s
 vnoremap c "_c
 nnoremap c "_c
+vnoremap C "_C
+nnoremap C "_C
 
 " registerに保存する切り取り
 nnoremap t d
 vnoremap t x
 nnoremap tt dd
-nnoremap T D
+nnoremap T dd
 
 " window, tab, buffer操作
 nnoremap s <Nop>
@@ -139,3 +141,10 @@ inoremap <C-l> <Right>
 inoremap <C-c> <C-o>b
 inoremap <C-v> <C-o>e
 inoremap <C-b> <C-o>w
+
+""コメントは継続されず，移動もしない
+nnoremap gj :<C-u>call append(line('.'), '')<CR>
+nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
+""コメント行のあとはコメントが継続する．移動もする．
+"nnoremap gj :o<ESC>
+"nnoremap gk :O<ESC>
