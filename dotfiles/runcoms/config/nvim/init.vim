@@ -38,6 +38,7 @@ syntax enable
 "endif
 
 "set number
+"set smartindent
 "set autoindent
 "set tabstop=2
 "set shiftwidth=2
