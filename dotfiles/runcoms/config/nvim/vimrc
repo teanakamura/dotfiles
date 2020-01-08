@@ -151,5 +151,11 @@ nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
 "nnoremap gk :O<ESC>
 
 nnoremap <C-b> ^
+nnoremap d<C-b> "_d^
+nnoremap c<C-b> "_c^
+nnoremap t<C-b> d^
 nnoremap <C-e> $
+nnoremap d<C-e> "_d$
+nnoremap c<C-e> "_c$
+nnoremap t<C-e> d$
 nnoremap <C-t> <C-e>
