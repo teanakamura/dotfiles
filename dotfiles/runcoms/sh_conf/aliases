@@ -9,8 +9,6 @@ alias relogin='exec $SHELL -l'
 alias open='open .'
 alias jn='jupyter notebook'
 alias jl='jupyter lab'
-alias 'pf-lab-jn'='ssh -L 3333:localhost:3333 athena -t ssh -L 3333:localhost:3333 nike'
-  # portforwarding labratory jupyter notebook server
 alias diff='diff -y'
 alias cdiff='colordiff -y'
 alias cdiffscl='colordiff -y --suppress-common-lines'
