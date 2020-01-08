@@ -52,7 +52,6 @@ set expandtab
 set tabstop=2
 set softtabstop=-1
 set shiftwidth=2
-set guioptions+=a
 set autoindent
 set smartindent  ""filetype indentで上書きされるので意味ない
 "set cindent
@@ -138,7 +137,7 @@ inoremap <C-k> <Del>
 inoremap <C-l> <Right>
 inoremap <C-b> <C-o>b
 inoremap <C-e> <C-o>e
-inoremap <C-i> <C-o>w
+inoremap <C-q> <C-o>w
 inoremap <C-c> <C-w>
 inoremap <C-v> <C-o>"_dw
 inoremap <C-f> <C-o>"_diw
