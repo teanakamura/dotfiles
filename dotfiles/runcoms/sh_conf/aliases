@@ -19,3 +19,5 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 alias tarc='tar -zcvf'
 alias tarx='tar -zxvf'
 alias v='nvim'
+alias pg='pgrep -fl -u `whoami`'
+alias pk='pgrep -fl -u `whoami`'
