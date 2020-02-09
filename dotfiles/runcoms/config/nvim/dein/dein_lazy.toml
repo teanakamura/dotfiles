@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
+on_cmd = ['Denite', 'Dfile', 'Dmru', 'Drec', 'Dmenu']
 if = 'has("nvim")'
 if = 'has("python3")'
 hook_source = 'source ~/.config/nvim/plugins/denite.vim'
@@ -9,3 +9,8 @@ hook_source = 'source ~/.config/nvim/plugins/denite.vim'
 repo = 'Shougo/neomru.vim'
 depends = ['denite']
 if = 'has("nvim")'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Git', 'Gstatus', 'Gblame', 'Glog', 'Gread', 'Gwrite', 'Gremove']
+hook_source = 'source ~/.config/nvim/plugins/vim-fugitive.vim'

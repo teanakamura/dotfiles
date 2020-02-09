@@ -14,3 +14,6 @@ repo = 'Shougo/deoplete.nvim'
 if = 'has("python3")'
 hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
