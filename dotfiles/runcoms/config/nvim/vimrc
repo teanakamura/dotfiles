@@ -59,7 +59,10 @@ set smartindent  ""filetype indentで上書きされるので意味ない
 "----------------------------
 " color
 "----------------------------
+set termguicolors
+colorscheme molokai
 hi Comment ctermfg=3
+set pumblend=10
 
 "----------------------------
 " Key Mapping
@@ -67,7 +70,7 @@ hi Comment ctermfg=3
 " registerに保存しない削除
 vnoremap d "_d
 nnoremap d "_d
-vnoremap D "_dd
+vnoremap D "_d
 nnoremap D "_dd
 vnoremap x "_x
 nnoremap x "_x
@@ -77,6 +80,7 @@ vnoremap c "_c
 nnoremap c "_c
 vnoremap C "_C
 nnoremap C "_C
+vnoremap Y "+y
 
 " registerに保存する切り取り
 nnoremap t d
@@ -88,13 +92,15 @@ nnoremap T dd
 nnoremap s <Nop>
 nnoremap sf :<C-u>bfirst<CR>
 nnoremap sd :<C-u>bdelete<CR>
-nnoremap sn :<C-u>tabnext<CR>
-nnoremap sp :<C-u>tabprevious<CR>
+nnoremap sb :<C-u>bnext<CR>
+nnoremap sN :<C-u>bnext<CR>
+nnoremap sP :<C-u>bprevious<CR>
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
-nnoremap sw <C-w>w
+nnoremap so <C-w>w
+"nnoremap sw <C-w>w
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 nnoremap s+ <C-w>+
@@ -112,9 +118,12 @@ nnoremap sT <C-w>T
 nnoremap ss :<C-u>split<CR>
 nnoremap sv :<C-u>vsplit<CR>
 nnoremap sq :<C-u>quit<CR>
+nnoremap sa :<C-u>quitall<CR>
 nnoremap sc :<C-u>close<CR>
 nnoremap sew :<C-u>only<CR>
 nnoremap st :<C-u>tabnew<CR>
+nnoremap sn :<C-u>tabnext<CR>
+nnoremap sp :<C-u>tabprevious<CR>
 nnoremap sx :<C-u>tabclose<CR>
 nnoremap set :<C-u>tabonly<CR>
 "nnoremap sT :<C-u>Unite tab<CR>
@@ -131,10 +140,10 @@ nnoremap set :<C-u>tabonly<CR>
 "call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 " insert modeでの削除，カーソル移動
-inoremap <C-h> <Left>
-inoremap <C-j> <BS>
-inoremap <C-k> <Del>
-inoremap <C-l> <Right>
+"inoremap <C-h> <BS>
+inoremap <C-j> <Left>
+inoremap <C-k> <Right>
+inoremap <C-l> <Del>
 inoremap <C-b> <C-o>b
 inoremap <C-e> <C-o>e
 inoremap <C-q> <C-o>w
@@ -157,3 +166,6 @@ nnoremap <C-b> $
 nnoremap d<C-b> "_d$
 nnoremap c<C-b> "_c$
 nnoremap t<C-b> d$
+
+""repeat command
+nnoremap c. q:k<CR>
