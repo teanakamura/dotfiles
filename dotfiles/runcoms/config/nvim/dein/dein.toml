@@ -17,3 +17,7 @@ hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
+
+[[plugins]]
+repo = 'kshenoy/vim-signature'
+hook_add = 'source ~/.config/nvim/plugins/vim-signate.vim'
