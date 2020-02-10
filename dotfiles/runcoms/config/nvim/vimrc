@@ -44,6 +44,7 @@ set showmatch matchtime=1
 set list listchars=tab:~\ ,trail:~
 set laststatus=2
 set number
+set foldmethod=marker
 
 "----------------------------
 " タブ・インデント
@@ -151,21 +152,18 @@ inoremap <C-c> <C-w>
 inoremap <C-v> <C-o>"_dw
 inoremap <C-f> <C-o>"_diw
 
-""コメントは継続されず，移動もしない
+"" 空行追加．コメントは継続されず，移動もしない
 nnoremap gj :<C-u>call append(line('.'), '')<CR>
 nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
-""コメント行のあとはコメントが継続する．移動もする．
+""空行追加．コメント行のあとはコメントが継続する．移動もする．
 "nnoremap gj :o<ESC>
 "nnoremap gk :O<ESC>
 
+"" 行頭，行末移動
 nnoremap <C-f> ^
-nnoremap d<C-f> "_d^
-nnoremap c<C-f> "_c^
-nnoremap t<C-f> d^
+onoremap <C-f> ^
 nnoremap <C-b> $
-nnoremap d<C-b> "_d$
-nnoremap c<C-b> "_c$
-nnoremap t<C-b> d$
+onoremap <C-b> $
 
-""repeat command
+"" repeat command
 nnoremap c. q:k<CR>
