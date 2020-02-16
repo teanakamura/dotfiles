@@ -231,6 +231,9 @@ tnoremap <C-s>et <C-\><C-n>:<C-u>tabonly<CR>
 "tnoremap <C-s>B <C-\><C-n>:<C-u>Unite buffer -buffer-name=file<CR>
 "" terminal mode移行時にterminal-job modeにする
 autocmd TermOpen * startinsert
+autocmd TermEnter * startinsert
+autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
 
 
 "" insert modeでの削除，カーソル移動
@@ -263,8 +266,10 @@ nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
 
 "" 行頭，行末移動
 nnoremap <C-f> ^
+vnoremap <C-f> ^
 onoremap <C-f> ^
 nnoremap <C-b> $
+vnoremap <C-b> $
 onoremap <C-b> $
 
 
