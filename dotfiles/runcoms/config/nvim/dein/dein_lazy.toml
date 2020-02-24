@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd = ['Denite', 'Dfile', 'Dmru', 'Drec', 'Dmenu']
+on_cmd = ['Denite', 'Dfile', 'Dmru', 'Drec', 'Dmenu', 'Db']
 if = 'has("nvim")'
 if = 'has("python3")'
 hook_source = 'source ~/.config/nvim/plugins/denite.vim'

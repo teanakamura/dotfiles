@@ -106,6 +106,7 @@ function s:Dmenu(...)
     execute(':Denite '.join(s:denite_option_array, ' ').' menu')
   endif
 endfunction
+command! Db execute(':Denite buffer')
 command! Dr execute(':Denite -buffer-name=dresume_buffer -resume '.join(s:denite_option_array, ' ').'')
 command! Dn execute(':Denite -buffer-name=dresume_buffer -resume -cursor-pos=+1 -immediately '.join(s:denite_option_array, ' ').'')
 command! Dp execute(':Denite -buffer-name=dresume_buffer -resume -cursor-pos=-1 -immediately '.join(s:denite_option_array, ' ').'')
@@ -134,6 +135,13 @@ let s:menus.my_commands.command_candidates = [
 		\ ['Format code', 'FormatCode', 'go,python'],
 	\ ]
 call denite#custom#var('menu', 'menus', s:menus)
+
+
+"" Add custom keymappings
+nnoremap <C-s>B :<C-u>Denite buffer<CR>
+inoremap <C-s>B :<C-u>Denite buffer<CR>
+tnoremap <C-s>B :<C-u>Denite buffer<CR>
+
 
 
 

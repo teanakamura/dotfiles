@@ -94,6 +94,7 @@ nnoremap <C-s> <Nop>
 nnoremap <C-s>f :<C-u>bfirst<CR>
 nnoremap <C-s>d :<C-u>bdelete<CR>
 nnoremap <C-s>b :<C-u>bnext<CR>
+nnoremap <C-s>B :<C-u>ls<CR>
 nnoremap <C-s>N :<C-u>bnext<CR>
 nnoremap <C-k> :<C-u>bnext<CR>
 nnoremap <C-s>P :<C-u>bprevious<CR>
@@ -120,27 +121,16 @@ nnoremap <C-s>T <C-w>T
 "nnoremap <C-s>o <C-w>_<C-w>|
 nnoremap <C-s>s :<C-u>split<CR>
 nnoremap <C-s>v :<C-u>vsplit<CR>
-nnoremap <C-s>q :<C-u>quit<CR>
+nnoremap <C-s>x :<C-u>quit<CR>
 nnoremap <C-s>a :<C-u>quitall<CR>
 nnoremap <C-s>c :<C-u>close<CR>
 nnoremap <C-s>ew :<C-u>only<CR>
 nnoremap <C-s>t :<C-u>tabnew<CR>
 nnoremap <C-s>n :<C-u>tabnext<CR>
 nnoremap <C-s>p :<C-u>tabprevious<CR>
-nnoremap <C-s>x :<C-u>tabclose<CR>
+nnoremap <C-s>& :<C-u>tabclose<CR>
 nnoremap <C-s>et :<C-u>tabonly<CR>
-"nnoremap <C-s>T :<C-u>Unite tab<CR>
-"nnoremap <C-s>b :<C-u>Unite buffer_tab -buffer-name=file<CR>
-"nnoremap <C-s>B :<C-u>Unite buffer -buffer-name=file<CR>
 
-"call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-"call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-"call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-"call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-"call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-"call submode#map('bufmove', 'n', '', '<', '<C-w><')
-"call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-"call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 
 "" window, tab, buffer操作(insert)
@@ -148,6 +138,7 @@ inoremap <C-s> <Nop>
 inoremap <C-s>f <ESC>:<C-u>bfirst<CR>
 inoremap <C-s>d <ESC>:<C-u>bdelete<CR>
 inoremap <C-s>b <ESC>:<C-u>bnext<CR>
+inoremap <C-s>B <ESC>:<C-u>ls<CR>
 inoremap <C-s>N <ESC>:<C-u>bnext<CR>
 inoremap <C-s>P <ESC>:<C-u>bprevious<CR>
 inoremap <C-s>h <ESC><C-w>h
@@ -172,18 +163,15 @@ inoremap <C-s>T <ESC><C-w>T
 "inoremap <C-s>o <ESC><C-w>_<C-w>|
 inoremap <C-s>s <ESC>:<C-u>split<CR>
 inoremap <C-s>v <ESC>:<C-u>vsplit<CR>
-inoremap <C-s>q <ESC>:<C-u>quit<CR>
+inoremap <C-s>x <ESC>:<C-u>quit<CR>
 inoremap <C-s>a <ESC>:<C-u>quitall<CR>
 inoremap <C-s>c <ESC>:<C-u>close<CR>
 inoremap <C-s>ew <ESC>:<C-u>only<CR>
 inoremap <C-s>t <ESC>:<C-u>tabnew<CR>
 inoremap <C-s>n <ESC>:<C-u>tabnext<CR>
 inoremap <C-s>p <ESC>:<C-u>tabprevious<CR>
-inoremap <C-s>x <ESC>:<C-u>tabclose<CR>
+inoremap <C-s>& <ESC>:<C-u>tabclose<CR>
 inoremap <C-s>et <ESC>:<C-u>tabonly<CR>
-"inoremap <C-s>T <ESC>:<C-u>Unite tab<CR>
-"inoremap <C-s>b <ESC>:<C-u>Unite buffer_tab -buffer-name=file<CR>
-"inoremap <C-s>B <ESC>:<C-u>Unite buffer -buffer-name=file<CR>
 
 
 "" window, tab, buffer操作(terminal)
@@ -192,6 +180,7 @@ tnoremap <C-s> <Nop>
 tnoremap <C-s>f <C-\><C-n>:<C-u>bfirst<CR>
 tnoremap <C-s>d <C-\><C-n>:<C-u>bdelete<CR>
 tnoremap <C-s>b <C-\><C-n>:<C-u>bnext<CR>
+tnoremap <C-s>B <C-\><C-n>:<C-u>ls<CR>
 tnoremap <C-s>N <C-\><C-n>:<C-u>bnext<CR>
 tnoremap <C-s>P <C-\><C-n>:<C-u>bprevious<CR>
 tnoremap <C-j> <C-\><C-n>:<C-u>bprevious<CR>
@@ -217,18 +206,17 @@ tnoremap <C-s>T <C-\><C-n><C-w>T
 "tnoremap <C-s>o <C-\><C-n><C-w>_<C-w>|
 tnoremap <C-s>s <C-\><C-n>:<C-u>split<CR>
 tnoremap <C-s>v <C-\><C-n>:<C-u>vsplit<CR>
-tnoremap <C-s>q <C-\><C-n>:<C-u>quit<CR>
+tnoremap <C-s>x <C-\><C-n>:<C-u>quit<CR>
 tnoremap <C-s>a <C-\><C-n>:<C-u>quitall<CR>
 tnoremap <C-s>c <C-\><C-n>:<C-u>close<CR>
 tnoremap <C-s>ew <C-\><C-n>:<C-u>only<CR>
 tnoremap <C-s>t <C-\><C-n>:<C-u>tabnew<CR>
 tnoremap <C-s>n <C-\><C-n>:<C-u>tabnext<CR>
 tnoremap <C-s>p <C-\><C-n>:<C-u>tabprevious<CR>
-tnoremap <C-s>x <C-\><C-n>:<C-u>tabclose<CR>
+tnoremap <C-s>& <C-\><C-n>:<C-u>tabclose<CR>
 tnoremap <C-s>et <C-\><C-n>:<C-u>tabonly<CR>
-"tnoremap <C-s>T <C-\><C-n>:<C-u>Unite tab<CR>
-"tnoremap <C-s>b <C-\><C-n>:<C-u>Unite buffer_tab -buffer-name=file<CR>
-"tnoremap <C-s>B <C-\><C-n>:<C-u>Unite buffer -buffer-name=file<CR>
+
+
 "" terminal mode移行時にterminal-job modeにする
 autocmd TermOpen * startinsert
 autocmd TermEnter * startinsert
@@ -251,7 +239,7 @@ inoremap <C-g> <C-o>w
 inoremap <C-v> <C-o>b
 "inoremap <C-l> <C-o>e
 inoremap <C-l> <C-o>"_dw
-inoremap <C-s> <C-o>"_diw
+inoremap <C-i> <C-o>"_diw
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 
