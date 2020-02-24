@@ -236,21 +236,31 @@ autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
 
 
-"" insert modeでの削除，カーソル移動
-inoremap <C-j> <Left>
-inoremap <C-k> <Right>
-inoremap <C-l> <C-o>w
-inoremap <C-b> <C-o>b
-inoremap <C-e> <C-o>e
+"" insert modeでのkeymappingをterminalに合わせる
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
 inoremap <C-d> <Delete>
-inoremap <C-f> <C-o>"_dw
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+inoremap <C-k> <C-o>"_d$
+inoremap <C-y> <C-o>gp
+inoremap <C-q> <C-d>
+
+"" insert modeでの移動・削除
+inoremap <C-g> <C-o>w
+inoremap <C-v> <C-o>b
+"inoremap <C-l> <C-o>e
+inoremap <C-l> <C-o>"_dw
 inoremap <C-s> <C-o>"_diw
-inoremap <C-g> <C-d>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
 
 
 "" command mode
-cnoremap <C-j> <Left>
-cnoremap <C-k> <Right>
+"cnoremap <C-j> <Left>
+"cnoremap <C-k> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
 cnoremap <C-d> <Delete>
 cnoremap <C-l> <C-d>
 cnoremap <C-a> <C-b>
@@ -265,12 +275,12 @@ nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
 
 
 "" 行頭，行末移動
-nnoremap <C-f> ^
-vnoremap <C-f> ^
-onoremap <C-f> ^
-nnoremap <C-b> $
-vnoremap <C-b> $
-onoremap <C-b> $
+nnoremap <C-b> ^
+vnoremap <C-b> ^
+onoremap <C-b> ^
+nnoremap <C-f> $<Right>
+vnoremap <C-f> $
+onoremap <C-f> $
 
 
 "" repeat command
