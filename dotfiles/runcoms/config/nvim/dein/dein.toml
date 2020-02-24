@@ -21,3 +21,7 @@ hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
 [[plugins]]
 repo = 'kshenoy/vim-signature'
 hook_add = 'source ~/.config/nvim/plugins/vim-signate.vim'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = 'source ~/.config/nvim/plugins/vim-submode.vim'
