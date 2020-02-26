@@ -239,7 +239,7 @@ inoremap <C-g> <C-o>w
 inoremap <C-v> <C-o>b
 "inoremap <C-l> <C-o>e
 inoremap <C-l> <C-o>"_dw
-inoremap <C-i> <C-o>"_diw
+inoremap <A-i> <C-o>"_diw
 inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 
