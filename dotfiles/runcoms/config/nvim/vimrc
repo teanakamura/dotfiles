@@ -82,6 +82,7 @@ nnoremap c "_c
 vnoremap C "_C
 nnoremap C "_C
 vnoremap Y "+y
+nnoremap Y "+yy
 
 "" registerに保存する切り取り
 nnoremap t d
