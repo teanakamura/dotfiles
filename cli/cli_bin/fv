@@ -1,0 +1,5 @@
+#!/bin/sh
+
+files=$(git ls-files) &&
+selected_files=$(echo "$files" | fzf -m --preview 'head -100 {}') &&
+v $selected_files
