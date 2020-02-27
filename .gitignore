@@ -5,3 +5,4 @@ dotfiles/runcoms/cache/*
 !dotfiles/runcoms/cache/dein_installer.sh
 dotfiles/runcoms/config/*
 !dotfiles/runcoms/config/nvim
+dotfiles/runcoms/config/nvim/template/*

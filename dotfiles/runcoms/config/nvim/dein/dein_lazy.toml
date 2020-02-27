@@ -14,3 +14,8 @@ if = 'has("nvim")'
 repo = 'tpope/vim-fugitive'
 on_cmd = ['Git', 'Gstatus', 'Gblame', 'Glog', 'Gread', 'Gwrite', 'Gremove']
 hook_source = 'source ~/.config/nvim/plugins/vim-fugitive.vim'
+
+[[plugins]]
+repo = 'mattn/vim-sonictemplate'
+on_cmd = ['Tem', 'Template']
+hook_source = 'source ~/.config/nvim/plugins/vim-sonictemplate.vim'
