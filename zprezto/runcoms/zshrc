@@ -15,3 +15,9 @@ fi
 ## load aliases
 source ~/.sh_conf/aliases
 [ -f ~/.local_conf/localrc ] && source ~/.local_conf/localrc
+
+## prompt theme
+autoload -Uz promptinit
+promptinit
+prompt damoekri
+
