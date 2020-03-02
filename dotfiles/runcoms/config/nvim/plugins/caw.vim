@@ -1,5 +1,3 @@
-g:caw_operator_keymappings = 1
-
 " 行の最初の文字の前にコメント文字をトグル
 nmap <Leader>c <Plug>(caw:hatpos:toggle)
 vmap <Leader>c <Plug>(caw:hatpos:toggle)
