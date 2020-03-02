@@ -10,6 +10,7 @@ augroup END
 function! s:configure_deol() abort
   nmap <buffer> <C-z> <Nop>
   nmap <buffer> dT <Plug>(deol_bg)
+  nmap <buffer> <C-c> :<C-u>quit<CR>
   "imap <buffer> <C-t> <Plug>(deol_bg)
   "nmap dT :<C-u>call deol#new({})<CR>
 endfunction
