@@ -29,3 +29,7 @@ hook_add = 'source ~/.config/nvim/plugins/vim-submode.vim'
 [[plugins]]
 repo = 'Shougo/deol.nvim'
 hook_add = 'source ~/.config/nvim/plugins/deol.vim'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = 'source ~/.config/nvim/plugins/caw.vim'
