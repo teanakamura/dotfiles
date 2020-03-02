@@ -33,3 +33,7 @@ hook_add = 'source ~/.config/nvim/plugins/deol.vim'
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = 'source ~/.config/nvim/plugins/caw.vim'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = 'source ~/.config/nvim/plugins/vim-easymotion.vim'
