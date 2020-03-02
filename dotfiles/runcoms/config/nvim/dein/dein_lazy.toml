@@ -19,3 +19,13 @@ hook_source = 'source ~/.config/nvim/plugins/vim-fugitive.vim'
 repo = 'mattn/vim-sonictemplate'
 on_cmd = ['Tem', 'Template']
 hook_source = 'source ~/.config/nvim/plugins/vim-sonictemplate.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_ft = 'python'
+hook_add = 'source ~/.config/nvim/plugins/vim-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+depends = ['vim-lsp']
+

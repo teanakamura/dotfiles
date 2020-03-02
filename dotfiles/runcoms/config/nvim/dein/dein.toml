@@ -27,13 +27,5 @@ repo = 'kana/vim-submode'
 hook_add = 'source ~/.config/nvim/plugins/vim-submode.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = 'source ~/.config/nvim/plugins/vim-lsp.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
 repo = 'Shougo/deol.nvim'
-on_cmd = ['Deol']
-hook_source = 'source ~/.config/nvim/plugins/deol.vim'
+hook_add = 'source ~/.config/nvim/plugins/deol.vim'
