@@ -128,6 +128,7 @@ let s:menus.vim.file_candidates = [
     \ ['init.vim', '~/.config/nvim/init.vim'],
     \ ['vimrc', '~/.config/nvim/vimrc'],
     \ ['plugins', '~/.config/nvim/plugins'],
+    \ ['template', '~/.config/nvim/template'],
   \ ]
 let s:menus.my_commands = {'description': 'Example commands'}
 let s:menus.my_commands.command_candidates = [
