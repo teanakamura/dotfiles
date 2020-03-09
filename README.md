@@ -2,7 +2,7 @@
 ```sh
 ## base
 cd dotfiles/dotfiles
-source install.sh
+./install.sh
 ```
 ```sh
 ## zsh
@@ -20,7 +20,7 @@ chsh -s <zsh_path>
 ## dein(neovim package manager)
 cd ~/.cache
 mkdir dein
-source dein_installer.sh ~/.cache/dein
+./dein_installer.sh ~/.cache/dein
 ```
 ```vim
 "" neovimを起動して
