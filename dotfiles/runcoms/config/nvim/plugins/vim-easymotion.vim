@@ -4,6 +4,8 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
+map  S <Plug>(easymotion-bd-f)
+nmap S <Plug>(easymotion-overwin-f)
 
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
