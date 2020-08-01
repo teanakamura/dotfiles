@@ -267,7 +267,9 @@ nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
 nnoremap <C-b> ^
 vnoremap <C-b> ^
 onoremap <C-b> ^
-nnoremap <C-f> $<Right>
+"nnoremap <C-f> $<Right>
+"i_Oから使うためにコマンド化
+nnoremap <C-f> :<C-u>normal $l<CR>
 vnoremap <C-f> $
 onoremap <C-f> $
 
