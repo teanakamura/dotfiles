@@ -1,0 +1,37 @@
+#!/bin/bash
+
+function parse_yaml () {
+   # variable regexes
+   # $s: spaces, $w: chars, $fs: field separator: commna
+   local s='[[:space:]]*' \
+         w='[a-zA-Z0-9_]*' \
+         fs=$(echo @|tr @ '\034')
+
+   # replace yaml lines
+   # e.g. `  KEY : "VALUE"` -> `  ,KEY,VALUE`
+   # e.g. ` KEY:VALUE` -> ` ,KEY,VALUE`
+   sed -n -e "s|^\($s\)\($w\)$s:$s\"\(.*\)\"$s\$|\1$fs\2$fs\3|p" \
+          -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\1$fs\2$fs\3|p"  $1 |
+
+   # parse replaced yaml lines
+   # field separator: $fs : comma
+   # $indent: nesting depth
+   # e.g. KEY:         VALUE1
+   #        DEP1:      VALUE2
+   #          DEP2:    VALUE3 <-
+   #      -> 
+   #      -> vn=KEY_DEP1_
+   #      -> KEY_DEP1_DEP2="VALUE3"
+   awk -F$fs '{
+      indent = length($1)/2;
+      vname[indent] = $2;
+      for (i in vname) {if (i > indent) {delete vname[i]}}
+      if (length($3) > 0) {
+         vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
+         printf("%s%s=\"%s\"\n", vn, $2, $3);
+      }
+   }'
+   return 0
+}
+
+parse_yaml $1
