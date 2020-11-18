@@ -88,7 +88,9 @@ nnoremap Y "+yy
 nnoremap t d
 vnoremap t x
 nnoremap tt dd
+vnoremap t d
 nnoremap T dd
+vnoremap T d
 
 "" window, tab, buffer操作(normal)
 nnoremap <C-s> <Nop>
