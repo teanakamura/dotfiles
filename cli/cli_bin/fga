@@ -1,4 +1,4 @@
-!#/bin/sh
+#!/bin/sh
 
 modified_files=$(git status --short | awk '{print $2}') &&
 selected_files=$(echo "$modified_files" | fzf -m --preview 'git diff {}') &&

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cl=~/.custom_list
+arr=($(cat $cl))
+arr+=($1)
+printf "%s\n" ${arr[@]} | sort -u >| $cl

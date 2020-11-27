@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cl=~/.custom_list
+arr=($(cat $cl))
+upd_arr=()
+for v in "${arr[@]}"; do
+  if [[ $1 != $v ]]; then
+    upd_arr+=($v)
+  fi
+done
+printf "%s\n" ${upd_arr[@]} | sort -u >| $cl
+
