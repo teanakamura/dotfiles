@@ -6,10 +6,11 @@ mkdir -p ~/.local_conf
 
 if [[ ! -e ~/.local/share/fzf ]]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/share/fzf
+  ~/.local/share/fzf/install
   {
     cat <<- EOS
 ## fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 EOS
   } >> ~/.local_conf/localrc

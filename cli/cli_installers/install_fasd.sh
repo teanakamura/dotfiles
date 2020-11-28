@@ -15,12 +15,15 @@ if type fasd >/dev/null 2>&1; then
     cat <<- 'EOS'
 ## fasd
 eval "$(fasd --init zsh-hook)"
+
+## fasd utils
 alias a='fasd -a'  ## any
 alias s='fasd -si'  ## show / search / select
 alias d='fasd -d'  ## directory
 alias f='fasd -f'  ## file
 alias sd='fasd -sid'  ## interactive directory selection
 alias sf='fasd -sif'     # interactive file selection
+source ~/dotfiles/cli/cli_func/fasd_cd.sh
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
 alias jj='cd $(fasd -sd | sort -rn | cut -c 12- | fzf)' # cd with fzf for directory
 source ~/dotfiles/cli/cli_func/jump-fasd-file-search.sh
@@ -33,7 +36,7 @@ fi
 if type fasd >/dev/null 2>&1; then
   {
     cat <<- 'EOS'
-## fasd + fzf
+## fasd + fzf utils
 source ~/dotfiles/cli/cli_func/jump-fzf-fasd-file-search.sh
 alias jff='jump-fzf-fasd-file-search'
 
