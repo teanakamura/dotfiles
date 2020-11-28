@@ -23,7 +23,7 @@ if type z >/dev/null 2>&1 && type fzf > /dev/null 2>&1; then
   {
     cat <<- EOS
 ## fzf + z utils
-source ~/dotfiles/cli/cli_zle/fzf-z-search.sh
+source ~/dotfiles/cli/cli_zle/jump-fzf-z-search.sh
 
 EOS
   } >> ~/.local_conf/localrc

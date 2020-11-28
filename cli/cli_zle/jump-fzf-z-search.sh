@@ -1,4 +1,4 @@
-fzf-z-search() {
+jump-fzf-z-search() {
   local dir=$(z | sort -rn | cut -c 12- | fzf)
   if [ -n "$dir" ]; then
     BUFFER+="cd $dir"
@@ -8,5 +8,5 @@ fzf-z-search() {
   fi
 }
 
-zle -N fzf-z-search
-bindkey '^j' fzf-z-search
+zle -N jump-fzf-z-search
+bindkey '^j' jump-fzf-z-search
