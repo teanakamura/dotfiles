@@ -1,12 +1,16 @@
 #!/bin/bash
 
 jump-fasd-file-search() {
-  local file=$(fasd -f $1)
-  local dir=$(dirname $file)
-  if [ -n "$dir" ]; then
-    echo "$file"
-    cd $dir
+  if [ $# = 0 ]; then
+    fasd -sf
   else
-    return 1
+    local file="$(fasd -f $1)"
+    local dir="$(dirname $file)"
+    if [ -n "$dir" ]; then
+      echo "$file"
+      cd $dir
+    else
+      return 1
+    fi
   fi
 }
