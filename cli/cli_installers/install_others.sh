@@ -1,5 +1,13 @@
 #!/bin/sh
 
-ln -s ~/dotfiles/cli/cli_bin/parse_yaml ~/.local/bin 
+ln -s ~/dotfiles/cli/cli_bin/parse_yaml ~/.local/bin
 
-echo 'source ~/dotfiles/cli/cli_zle/vi-find-char.sh' >> ~/.local_conf/localrc
+{
+  cat <<- EOS
+## bindkey zle
+bindkey '^f' vi-find-next-char
+bindkey '^b' vi-find-prev-char
+bindkey '^u' backward-kill-line
+
+EOS
+} >> ~/.local_conf/localrc
