@@ -15,6 +15,7 @@ chsh -s <zsh_path>
 ## neovim
 ## install neovim
 ## https://github.com/neovim/neovim/wiki/Installing-Neovim
+## enable 'nvim' command
 ```
 ```sh
 ## dein(neovim package manager)
