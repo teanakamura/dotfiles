@@ -13,7 +13,7 @@ fi
 
 # Customize to your needs...
 ## load aliases
-source ~/.sh_conf/aliases
+source "~/.config/shell/alias"
 [ -f ~/.local_conf/localrc ] && source ~/.local_conf/localrc
 
 # Ctrl-PとCtrl-Nで前方一致検索

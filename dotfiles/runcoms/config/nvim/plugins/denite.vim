@@ -118,8 +118,8 @@ let s:menus.zsh = {'description': 'Edit your import zsh configuration'}
 let s:menus.zsh.file_candidates = [
 		\ ['zshrc', '~/.zshrc'],
 		\ ['zshenv', '~/.zshenv'],
-    \ ['aliases', '~/.sh_conf/aliases'],
-    \ ['envs', '~/.sh_conf/envs'],
+    \ ['alias', '~/.config/shell/alias'],
+    \ ['env', '~/.config/shell/env'],
     \ ['localrc', '~/.local_conf/localrc'],
     \ ['local_profile', '~/.local_conf/local_profile']
 	\ ]

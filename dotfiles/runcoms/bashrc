@@ -1,2 +1,2 @@
-source ~/.sh_conf/aliases
+source "~/.config/shell/alias"
 [ -f ~/.local_conf/localrc ] && source ~/.local_conf/localrc
