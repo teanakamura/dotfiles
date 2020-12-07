@@ -7,3 +7,5 @@ dotfiles/runcoms/config/*
 !dotfiles/runcoms/config/nvim
 !dotfiles/runcoms/config/shell
 dotfiles/runcoms/config/nvim/template/*
+
+*.local

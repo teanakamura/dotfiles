@@ -64,4 +64,4 @@ fi
 
 ## load environmental variables
 source "~/.config/shell/env"
-[ -f ~/.local_conf/local_profile ] && source ~/.local_conf/local_profile
+[ -f "~/.config/shell/profile.local" ] && source "~/.local/shell/profile.local"

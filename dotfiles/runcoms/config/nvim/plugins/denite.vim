@@ -120,8 +120,8 @@ let s:menus.zsh.file_candidates = [
 		\ ['zshenv', '~/.zshenv'],
     \ ['alias', '~/.config/shell/alias'],
     \ ['env', '~/.config/shell/env'],
-    \ ['localrc', '~/.local_conf/localrc'],
-    \ ['local_profile', '~/.local_conf/local_profile']
+    \ ['rc.local', '~/.config/shell/rc.local'],
+    \ ['profile.local', '~/.config/shell/profile.local']
 	\ ]
 let s:menus.vim = {'description': 'Edit your vim configuration'}
 let s:menus.vim.file_candidates = [

@@ -1,2 +1,2 @@
 source "~/.config/shell/alias"
-[ -f ~/.local_conf/localrc ] && source ~/.local_conf/localrc
+[ -f "~/.config/shell/rc.local" ] && source "~/.config/shell/rc.local"

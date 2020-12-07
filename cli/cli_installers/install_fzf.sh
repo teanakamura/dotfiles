@@ -2,7 +2,6 @@
 
 mkdir -p ~/.local/share
 mkdir -p ~/.local/bin
-mkdir -p ~/.local_conf
 
 if [[ ! -e ~/.local/share/fzf ]]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/share/fzf
@@ -13,7 +12,7 @@ if [[ ! -e ~/.local/share/fzf ]]; then
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 EOS
-  } >> ~/.local_conf/localrc
+  } >> "~/.config/shell/rc.local"
   echo "which ag && export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g \"\"'" >> ~/.fzf.zsh
 fi
 
@@ -33,5 +32,5 @@ alias cla=fzf-custom-list-add
 alias clr=fzf-custom-list-remove
 
 EOS
-  } >> ~/.local_conf/localrc
+  } >> "~/.config/shell/rc.local"
 fi

@@ -14,7 +14,7 @@ fi
 # Customize to your needs...
 ## load aliases
 source "~/.config/shell/alias"
-[ -f ~/.local_conf/localrc ] && source ~/.local_conf/localrc
+[ -f "~/.config/shell/rc.local" ] && source "~/.local/shell/rc.local"
 
 # Ctrl-PとCtrl-Nで前方一致検索
 autoload -Uz history-search-end

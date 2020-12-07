@@ -2,7 +2,6 @@
 
 mkdir -p ~/.local/share
 mkdir -p ~/.local/bin
-mkdir -p ~/.local_conf
 
 if [[ ! -e ~/.local/share/z ]]; then
   git clone --depth 1 https://github.com/rupa/z.git ~/.local/share/z
@@ -16,7 +15,7 @@ if type z >/dev/null 2>&1; then
 alias j=z
 
 EOS
-  } >> ~/.local_conf/localrc
+  } >> "~/.config/shell/rc.local"
 fi
 
 if type z >/dev/null 2>&1 && type fzf > /dev/null 2>&1; then
@@ -26,5 +25,5 @@ if type z >/dev/null 2>&1 && type fzf > /dev/null 2>&1; then
 source ~/dotfiles/cli/cli_zle/jump-fzf-z-search.sh
 
 EOS
-  } >> ~/.local_conf/localrc
+  } >> "~/.config/shell/rc.local"
 fi

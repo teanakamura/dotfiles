@@ -2,7 +2,6 @@
 
 mkdir -p ~/.local/share
 mkdir -p ~/.local/bin
-mkdir -p ~/.local_conf
 
 if [[ ! -e ~/.local/share/fasd ]]; then
   git clone --depth 1 https://github.com/clvv/fasd.git ~/.local/share/fasd
@@ -29,7 +28,7 @@ source ~/dotfiles/cli/cli_func/jump-fasd-file-search.sh
 alias jf='jump-fasd-file-search'
 
 EOS
-  } >> ~/.local_conf/localrc
+  } >> "~/.config/shell/rc.local"
 fi
 
 if type fasd >/dev/null 2>&1; then
@@ -43,5 +42,5 @@ source ~/dotfiles/cli/cli_func/jump-fzf-fasd-file-search.sh
 alias jff='jump-fzf-fasd-file-search'
 
 EOS
-  } >> ~/.local_conf/localrc
+  } >> "~/.config/shell/rc.local"
 fi
