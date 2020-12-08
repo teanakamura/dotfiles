@@ -1,4 +1,4 @@
 source ~/.bashrc
 
-source "~/.config/shell/env"
-[ -f "~/.config/shell/profile.local" ] && source "~/.config/shell/profile.local"
+source ~/.config/shell/env
+[ -f ~/.config/shell/profile.local ] && source ~/.config/shell/profile.local

@@ -15,7 +15,7 @@ if type z >/dev/null 2>&1; then
 alias j=z
 
 EOS
-  } >> "~/.config/shell/rc.local"
+  } >> ~/.config/shell/rc.local
 fi
 
 if type z >/dev/null 2>&1 && type fzf > /dev/null 2>&1; then
@@ -25,5 +25,5 @@ if type z >/dev/null 2>&1 && type fzf > /dev/null 2>&1; then
 source ~/dotfiles/cli/cli_zle/jump-fzf-z-search.sh
 
 EOS
-  } >> "~/.config/shell/rc.local"
+  } >> ~/.config/shell/rc.local
 fi

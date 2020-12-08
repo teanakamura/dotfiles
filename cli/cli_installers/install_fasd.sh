@@ -28,7 +28,7 @@ source ~/dotfiles/cli/cli_func/jump-fasd-file-search.sh
 alias jf='jump-fasd-file-search'
 
 EOS
-  } >> "~/.config/shell/rc.local"
+  } >> ~/.config/shell/rc.local
 fi
 
 if type fasd >/dev/null 2>&1; then
@@ -42,5 +42,5 @@ source ~/dotfiles/cli/cli_func/jump-fzf-fasd-file-search.sh
 alias jff='jump-fzf-fasd-file-search'
 
 EOS
-  } >> "~/.config/shell/rc.local"
+  } >> ~/.config/shell/rc.local
 fi

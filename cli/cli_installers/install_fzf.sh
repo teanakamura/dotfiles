@@ -12,7 +12,7 @@ if [[ ! -e ~/.local/share/fzf ]]; then
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 EOS
-  } >> "~/.config/shell/rc.local"
+  } >> ~/.config/shell/rc.local
   echo "which ag && export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g \"\"'" >> ~/.fzf.zsh
 fi
 
@@ -32,5 +32,5 @@ alias cla=fzf-custom-list-add
 alias clr=fzf-custom-list-remove
 
 EOS
-  } >> "~/.config/shell/rc.local"
+  } >> ~/.config/shell/rc.local
 fi

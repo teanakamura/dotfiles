@@ -8,7 +8,7 @@ ln -s ~/dotfiles/cli/cli_bin/parse_yaml ~/.local/bin
 source ~/dotfiles/cli/cli_func/check_exec_shell.sh
 
 EOS
-} >> "~/.config/shell/rc.local"
+} >> ~/.config/shell/rc.local
 
 
 {
@@ -19,4 +19,4 @@ bindkey '^b' vi-find-prev-char
 bindkey '^u' backward-kill-line
 
 EOS
-} >> "~/.config/shell/rc.local"
+} >> ~/.config/shell/rc.local

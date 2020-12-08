@@ -63,5 +63,5 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 ## load environmental variables
-source "~/.config/shell/env"
-[ -f "~/.config/shell/profile.local" ] && source "~/.local/shell/profile.local"
+source ~/.config/shell/env
+[ -f ~/.config/shell/profile.local ] && source ~/.config/shell/profile.local
