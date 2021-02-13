@@ -1,20 +1,3 @@
-set encoding=utf-8
-set virtualedit=block,onemore
-set mouse=a
-
-"----------------------------
-" カーソル
-"----------------------------
-set cursorline
-"set cursorcolumn
-set backspace=indent,eol,start
-set whichwrap=h,l,<,>,[,]
-set scrolloff=4
-set sidescroll=1
-
-"----------------------------
-" ファイル
-"----------------------------
 set confirm
 set hidden
 set autoread
@@ -123,7 +106,9 @@ nnoremap <C-s>L <C-w>L
 nnoremap <C-s>T <C-w>T
 "nnoremap <C-s>o <C-w>_<C-w>|
 nnoremap <C-s>s :<C-u>split<CR>
+nnoremap <C-s>_ :<C-u>split<CR>
 nnoremap <C-s>v :<C-u>vsplit<CR>
+nnoremap <C-s>\ :<C-u>vsplit<CR>
 nnoremap <C-s>x :<C-u>quit<CR>
 nnoremap <C-s>a :<C-u>quitall<CR>
 nnoremap <C-s>c :<C-u>close<CR>
@@ -165,7 +150,9 @@ inoremap <C-s>L <ESC><C-w>L
 inoremap <C-s>T <ESC><C-w>T
 "inoremap <C-s>o <ESC><C-w>_<C-w>|
 inoremap <C-s>s <ESC>:<C-u>split<CR>
+inoremap <C-s>_ <ESC>:<C-u>split<CR>
 inoremap <C-s>v <ESC>:<C-u>vsplit<CR>
+inoremap <C-s>\ <ESC>:<C-u>vsplit<CR>
 inoremap <C-s>x <ESC>:<C-u>quit<CR>
 inoremap <C-s>a <ESC>:<C-u>quitall<CR>
 inoremap <C-s>c <ESC>:<C-u>close<CR>
@@ -208,7 +195,9 @@ tnoremap <C-s>L <C-\><C-n><C-w>L
 tnoremap <C-s>T <C-\><C-n><C-w>T
 "tnoremap <C-s>o <C-\><C-n><C-w>_<C-w>|
 tnoremap <C-s>s <C-\><C-n>:<C-u>split<CR>
+tnoremap <C-s>_ <C-\><C-n>:<C-u>split<CR>
 tnoremap <C-s>v <C-\><C-n>:<C-u>vsplit<CR>
+tnoremap <C-s>\ <C-\><C-n>:<C-u>vsplit<CR>
 tnoremap <C-s>x <C-\><C-n>:<C-u>quit<CR>
 tnoremap <C-s>a <C-\><C-n>:<C-u>quitall<CR>
 tnoremap <C-s>c <C-\><C-n>:<C-u>close<CR>
