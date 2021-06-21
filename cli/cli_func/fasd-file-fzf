@@ -1,0 +1,5 @@
+#!/bin/sh
+fasd-file-fzf() {
+  fasd -f -l $1 | fzf
+  return 0
+}

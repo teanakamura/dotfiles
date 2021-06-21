@@ -3,18 +3,25 @@
 mkdir -p ~/.local/share
 mkdir -p ~/.local/bin
 
-if [[ ! -e ~/.local/share/fzf ]]; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/share/fzf
-  ~/.local/share/fzf/install
-  {
-    cat <<- EOS
-## fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-EOS
-  } >> ~/.config/shell/rc.local
-  echo "which ag && export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g \"\"'" >> ~/.fzf.zsh
-fi
+# if [[ ! -e ~/.local/share/fzf ]]; then
+#   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/share/fzf
+#   ~/.local/share/fzf/install
+#   {
+#     cat <<- EOS
+# ## fzf
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# 
+# EOS
+#   } >> ~/.config/shell/rc.local
+# 
+#   {
+#     cat <<- EOS
+# if type ag >/dev/null 2>&1; then
+#   export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# fi
+# EOS
+#   } >> ~/.fzf.zsh
+# fi
 
 if type fzf >/dev/null 2>&1; then
   #ln -s ~/.local/share/fzf/bin/fzf ~/.local/bin
@@ -28,8 +35,10 @@ if type fzf >/dev/null 2>&1; then
     cat <<- EOS
 ## fzf utils
 source ~/dotfiles/cli/cli_zle/fzf-custom-list-search.sh
-alias cla=fzf-custom-list-add
-alias clr=fzf-custom-list-remove
+source ~/dotfiles/cli/cli_func/jump-fzf-under
+alias ju='jump-fzf-under'
+alias cla='fzf-custom-list-add'
+alias clr='fzf-custom-list-remove'
 
 EOS
   } >> ~/.config/shell/rc.local
