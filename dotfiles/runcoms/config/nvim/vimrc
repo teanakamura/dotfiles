@@ -1,4 +1,4 @@
-set confirm
+
 set hidden
 set autoread
 set nobackup
@@ -28,6 +28,8 @@ set list listchars=tab:~\ ,trail:~
 set laststatus=2
 set number
 set foldmethod=marker
+set virtualedit=onemore
+set whichwrap+=h,l
 
 "----------------------------
 " タブ・インデント
@@ -51,6 +53,10 @@ set pumblend=10
 "----------------------------
 " Key Mapping
 "----------------------------
+"" Leader
+let mapleader = "\<Space>"
+
+
 "" registerに保存しない削除
 vnoremap d "_d
 nnoremap d "_d
@@ -111,6 +117,7 @@ nnoremap <C-s>v :<C-u>vsplit<CR>
 nnoremap <C-s>\ :<C-u>vsplit<CR>
 nnoremap <C-s>x :<C-u>quit<CR>
 nnoremap <C-s>a :<C-u>quitall<CR>
+nnoremap <C-s><S-a> :<C-u>quitall!<CR>
 nnoremap <C-s>c :<C-u>close<CR>
 nnoremap <C-s>ew :<C-u>only<CR>
 nnoremap <C-s>t :<C-u>tabnew<CR>
@@ -155,6 +162,7 @@ inoremap <C-s>v <ESC>:<C-u>vsplit<CR>
 inoremap <C-s>\ <ESC>:<C-u>vsplit<CR>
 inoremap <C-s>x <ESC>:<C-u>quit<CR>
 inoremap <C-s>a <ESC>:<C-u>quitall<CR>
+inoremap <C-s><S-a> <ESC>:<C-u>quitall!<CR>
 inoremap <C-s>c <ESC>:<C-u>close<CR>
 inoremap <C-s>ew <ESC>:<C-u>only<CR>
 inoremap <C-s>t <ESC>:<C-u>tabnew<CR>
@@ -216,7 +224,7 @@ autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
 
 
-"" insert modeでのkeymappingをterminalに合わせる
+"" insert modeでのkeymappingをemacsに合わせる
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-d> <Delete>
@@ -267,3 +275,7 @@ onoremap <C-f> $
 
 "" repeat command
 nnoremap c. q:k<CR>
+
+
+"" save
+nnoremap zz :<C-u>update<CR>

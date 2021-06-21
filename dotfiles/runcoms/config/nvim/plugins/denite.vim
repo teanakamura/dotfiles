@@ -114,6 +114,11 @@ command! Dp execute(':Denite -buffer-name=dresume_buffer -resume -cursor-pos=-1 
 
 "" Add custom menus
 let s:menus = {}
+let s:menus.competitive_programming = {'description': 'utils'}
+let s:menus.competitive_programming.file_candidates = [
+    \ ['algorithms', '~/Excercise/AtCoder/algorithms'],
+    \ ['template', '~/.config/nvim/template/cpp']
+  \ ]
 let s:menus.zsh = {'description': 'Edit your import zsh configuration'}
 let s:menus.zsh.file_candidates = [
 		\ ['zshrc', '~/.zshrc'],

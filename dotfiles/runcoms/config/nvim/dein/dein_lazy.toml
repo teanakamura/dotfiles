@@ -17,7 +17,7 @@ hook_source = 'source ~/.config/nvim/plugins/vim-fugitive.vim'
 
 [[plugins]]
 repo = 'mattn/vim-sonictemplate'
-on_cmd = ['Tem', 'Template']
+on_cmd = ['Template']
 hook_source = 'source ~/.config/nvim/plugins/vim-sonictemplate.vim'
 
 [[plugins]]
