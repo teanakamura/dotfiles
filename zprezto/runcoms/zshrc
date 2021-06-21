@@ -27,4 +27,5 @@ bindkey "^n" history-beginning-search-forward-end
 autoload -Uz promptinit
 promptinit
 prompt damoekri
+PROMPT='%F{033}${_prompt_damoekri_pwd}%f${editor_info[keymap]} '
 
