@@ -5,6 +5,14 @@
 [core]
   editor = vim
 
-
 [include]
   path = ~/.config/git/gitconfig.local
+
+[diff]
+  tool = nvimdiff
+
+[difftool]
+  prompt = false
+
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd l\""

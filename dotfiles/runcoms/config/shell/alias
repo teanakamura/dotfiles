@@ -19,5 +19,7 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 alias tarc='tar -zcvf'
 alias tarx='tar -zxvf'
 alias v='nvim'
+alias vdiff='nvim -d'
+alias gdiff='git difftool'
 alias pg='pgrep -fl -u `whoami`'
 alias pk='pkill -fln -u `whoami`'
