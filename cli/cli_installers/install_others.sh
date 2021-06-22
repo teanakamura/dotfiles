@@ -14,8 +14,9 @@ EOS
 {
   cat <<- EOS
 ## bindkey zle
-bindkey '^f' vi-find-next-char
-bindkey '^b' vi-find-prev-char
+#bindkey '^f' vi-find-next-char
+#bindkey '^b' vi-find-prev-char
+bindkey '^s' vi-find-next-char
 bindkey '^u' backward-kill-line
 
 EOS
