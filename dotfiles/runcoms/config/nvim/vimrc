@@ -2,6 +2,7 @@
 set hidden
 set autoread
 set nobackup
+set mouse=a
 set swapfile
 " swapfileが存在するときに自動的にreadonlyで開く
 augroup swapchoice-readonly
@@ -21,7 +22,6 @@ set gdefault
 "----------------------------
 " 表示
 "----------------------------
-syntax enable
 set showcmd
 set showmatch matchtime=1
 set list listchars=tab:~\ ,trail:~
@@ -45,10 +45,12 @@ set smartindent  ""filetype indentで上書きされるので意味ない
 "----------------------------
 " color
 "----------------------------
+syntax enable
 set termguicolors
 colorscheme molokai
 hi Comment ctermfg=3
 set pumblend=10
+hi Normal guibg=#000D00
 
 "----------------------------
 " Key Mapping
