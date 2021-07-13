@@ -28,10 +28,6 @@ autoload -Uz promptinit
 promptinit
 prompt damoekri
 # PROMPT='%F{033}${_prompt_damoekri_pwd}%f${editor_info[keymap]} '
-<<<<<<< HEAD
 PROMPT='%F{038}[${HOST:0:4}] %~
-=======
-PROMPT='%F{038}%~
->>>>>>> 732fa78d738d4534cb69c276233db342fe217e7a
 %f${editor_info[keymap]} '
 
