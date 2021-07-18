@@ -8,6 +8,9 @@ runtime vimrc
 "" Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
+"" Specify python path
+let g:python3_host_prog = $PYTHON3_BIN_PATH
+
 if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
@@ -35,13 +38,3 @@ filetype plugin indent on
 "if dein#check_install()
 "  call dein#install()
 "endif
-
-"set number
-"set smartindent
-"set autoindent
-"set tabstop=2
-"set shiftwidth=2
-"set expandtab
-"set splitright
-"set clipboard=unnamed
-"set hls

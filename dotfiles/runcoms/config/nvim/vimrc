@@ -1,9 +1,11 @@
-
 set hidden
 set autoread
 set nobackup
 set mouse=a
 set swapfile
+set splitright
+set splitbelow
+set clipboard+=unnamed
 " swapfileが存在するときに自動的にreadonlyで開く
 augroup swapchoice-readonly
   autocmd!
@@ -30,6 +32,7 @@ set number
 set foldmethod=marker
 set virtualedit=onemore
 set whichwrap+=h,l
+set cursorline
 
 "----------------------------
 " タブ・インデント
@@ -48,9 +51,13 @@ set smartindent  ""filetype indentで上書きされるので意味ない
 syntax enable
 set termguicolors
 colorscheme molokai
+hi CursorLine guifg=NONE
 hi Comment ctermfg=3
 set pumblend=10
-hi Normal guibg=#000D00
+let g:active_bg = 'guibg=NONE'
+let g:inactive_bg = 'guibg=#202620'
+execute ('hi Normal '.g:active_bg)
+execute ('hi NormalNC '.g:inactive_bg)
 
 "----------------------------
 " Key Mapping
@@ -59,7 +66,18 @@ hi Normal guibg=#000D00
 let mapleader = "\<Space>"
 
 
-"" registerに保存しない削除
+"" escape
+nmap <C-s> <ESC>
+imap <C-s> <ESC>
+vmap <C-s> <ESC>
+xmap <C-s> <ESC>
+omap <C-s> <ESC>
+tmap <C-s> <ESC>
+tmap <C-[> <ESC>
+tnoremap <ESC> <C-\><C-n>
+
+
+"" cut & not save
 vnoremap d "_d
 nnoremap d "_d
 vnoremap D "_d
@@ -72,151 +90,125 @@ vnoremap c "_c
 nnoremap c "_c
 vnoremap C "_C
 nnoremap C "_C
-vnoremap Y "+y
-nnoremap Y "+yy
-
-"" registerに保存する切り取り
+vnoremap p "_dP
+vnoremap P "_dP
+"" cut & save
 nnoremap t d
 vnoremap t x
 nnoremap tt dd
 vnoremap t d
 nnoremap T dd
 vnoremap T d
+"" yank
+vnoremap Y "+y
+nnoremap Y "+yy
+"" yank & move
+vnoremap gyy "+ygv<ESC>
+vnoremap gY "+ygv<ESC>
+
 
 "" window, tab, buffer操作(normal)
-nnoremap <C-s> <Nop>
-nnoremap <C-s>f :<C-u>bfirst<CR>
-nnoremap <C-s>d :<C-u>bdelete<CR>
-nnoremap <C-s>b :<C-u>bnext<CR>
-nnoremap <C-s>B :<C-u>ls<CR>
-nnoremap <C-s>N :<C-u>bnext<CR>
-nnoremap <C-k> :<C-u>bnext<CR>
-nnoremap <C-s>P :<C-u>bprevious<CR>
-nnoremap <C-j> :<C-u>bprevious<CR>
-nnoremap <C-s>h <C-w>h
-nnoremap <C-s>j <C-w>j
-nnoremap <C-s>k <C-w>k
-nnoremap <C-s>l <C-w>l
-nnoremap <C-s>o <C-w>w
-"nnoremap <C-s>w <C-w>w
-nnoremap <C-s>> <C-w>>
-nnoremap <C-s>< <C-w><
-nnoremap <C-s>+ <C-w>+
-nnoremap <C-s>- <C-w>-
-nnoremap <C-s>= <C-w>=
-"nnoremap <C-s>O <C-w>=
-nnoremap <C-s>r <C-w>r
-nnoremap <C-s>R <C-w>R
-nnoremap <C-s>H <C-w>H
-nnoremap <C-s>J <C-w>J
-nnoremap <C-s>K <C-w>K
-nnoremap <C-s>L <C-w>L
-nnoremap <C-s>T <C-w>T
-"nnoremap <C-s>o <C-w>_<C-w>|
-nnoremap <C-s>s :<C-u>split<CR>
-nnoremap <C-s>_ :<C-u>split<CR>
-nnoremap <C-s>v :<C-u>vsplit<CR>
-nnoremap <C-s>\ :<C-u>vsplit<CR>
-nnoremap <C-s>x :<C-u>quit<CR>
-nnoremap <C-s>a :<C-u>quitall<CR>
-nnoremap <C-s><S-a> :<C-u>quitall!<CR>
-nnoremap <C-s>c :<C-u>close<CR>
-nnoremap <C-s>ew :<C-u>only<CR>
-nnoremap <C-s>t :<C-u>tabnew<CR>
-nnoremap <C-s>n :<C-u>tabnext<CR>
-nnoremap <C-s>p :<C-u>tabprevious<CR>
-nnoremap <C-s>& :<C-u>tabclose<CR>
-nnoremap <C-s>et :<C-u>tabonly<CR>
-
-
+function BufferDeleteAndMove() abort
+  let current_buffer = bufnr()
+  execute "bnext"
+  execute "bdelete".current_buffer
+endfunction
+" nnoremap <C-w> <Nop>
+" nnoremap <C-w>h <C-w>h
+" nnoremap <C-w>j <C-w>j
+" nnoremap <C-w>k <C-w>k
+" nnoremap <C-w>l <C-w>l
+nnoremap <C-w>d :<C-u>call BufferDeleteAndMove()<CR>
+nnoremap <C-w>D :<C-u>bdelete<CR>
+nnoremap <C-w>f :<C-u>bfirst<CR>
+nnoremap <C-w>b :<C-u>buffer #<CR>
+nnoremap <C-l> :<C-u>bnext<CR>
+nnoremap <C-h> :<C-u>bprevious<CR>
+nnoremap <C-w>o <C-w>w
+nnoremap <C-w>O <C-w>W
+nnoremap <C-w>L <C-w>>
+nnoremap <C-w>H <C-w><
+nnoremap <C-w>K <C-w>+
+nnoremap <C-w>J <C-w>-
+" nnoremap <C-w>s <C-w>s
+nnoremap <C-w>_ :<C-u>split<CR>
+" nnoremap <C-w>v <C-w>v
+nnoremap <C-w>\ :<C-u>vsplit<CR>
+nnoremap <C-w>x :<C-u>close<CR>
+nnoremap <C-w>z :<C-u>only<CR>
+nnoremap <C-w>t <C-w>T 
+nnoremap <C-w>c :<C-u>tabnew<CR>
+nnoremap <C-w>n :<C-u>tabnext<CR>
+nnoremap <C-w>p :<C-u>tabprevious<CR>
+nnoremap <C-w>& :<C-u>tabclose<CR>
 
 "" window, tab, buffer操作(insert)
-inoremap <C-s> <Nop>
-inoremap <C-s>f <ESC>:<C-u>bfirst<CR>
-inoremap <C-s>d <ESC>:<C-u>bdelete<CR>
-inoremap <C-s>b <ESC>:<C-u>bnext<CR>
-inoremap <C-s>B <ESC>:<C-u>ls<CR>
-inoremap <C-s>N <ESC>:<C-u>bnext<CR>
-inoremap <C-s>P <ESC>:<C-u>bprevious<CR>
-inoremap <C-s>h <ESC><C-w>h
-inoremap <C-s>j <ESC><C-w>j
-inoremap <C-s>k <ESC><C-w>k
-inoremap <C-s>l <ESC><C-w>l
-inoremap <C-s>o <ESC><C-w>w
-"inoremap <C-s>w <ESC><C-w>w
-inoremap <C-s>> <ESC><C-w>>
-inoremap <C-s>< <ESC><C-w><
-inoremap <C-s>+ <ESC><C-w>+
-inoremap <C-s>- <ESC><C-w>-
-inoremap <C-s>= <ESC><C-w>=
-"inoremap <C-s>O <ESC><C-w>=
-inoremap <C-s>r <ESC><C-w>r
-inoremap <C-s>R <ESC><C-w>R
-inoremap <C-s>H <ESC><C-w>H
-inoremap <C-s>J <ESC><C-w>J
-inoremap <C-s>K <ESC><C-w>K
-inoremap <C-s>L <ESC><C-w>L
-inoremap <C-s>T <ESC><C-w>T
-"inoremap <C-s>o <ESC><C-w>_<C-w>|
-inoremap <C-s>s <ESC>:<C-u>split<CR>
-inoremap <C-s>_ <ESC>:<C-u>split<CR>
-inoremap <C-s>v <ESC>:<C-u>vsplit<CR>
-inoremap <C-s>\ <ESC>:<C-u>vsplit<CR>
-inoremap <C-s>x <ESC>:<C-u>quit<CR>
-inoremap <C-s>a <ESC>:<C-u>quitall<CR>
-inoremap <C-s><S-a> <ESC>:<C-u>quitall!<CR>
-inoremap <C-s>c <ESC>:<C-u>close<CR>
-inoremap <C-s>ew <ESC>:<C-u>only<CR>
-inoremap <C-s>t <ESC>:<C-u>tabnew<CR>
-inoremap <C-s>n <ESC>:<C-u>tabnext<CR>
-inoremap <C-s>p <ESC>:<C-u>tabprevious<CR>
-inoremap <C-s>& <ESC>:<C-u>tabclose<CR>
-inoremap <C-s>et <ESC>:<C-u>tabonly<CR>
-
+" inoremap <C-w> <Nop>
+" inoremap <C-w>h <ESC><C-w>h
+" inoremap <C-w>j <ESC><C-w>j
+" inoremap <C-w>k <ESC><C-w>k
+" inoremap <C-w>l <ESC><C-w>l
+" inoremap <C-w>d <ESC>:<C-u>call BufferDeleteAndMove()<CR>
+" inoremap <C-w>D <ESC>:<C-u>bdelete<CR>
+" inoremap <C-w>f <ESC>:<C-u>bfirst<CR>
+" inoremap <C-w>b <ESC>:<C-u>buffer #<CR>
+" inoremap <C-w>o <ESC><C-w>w
+" inoremap <C-w>O <ESC><C-w>W
+" inoremap <C-w>u <ESC><C-w>p
+" inoremap <C-w>L <ESC><C-w>>
+" inoremap <C-w>H <ESC><C-w><
+" inoremap <C-w>K <ESC><C-w>+
+" inoremap <C-w>J <ESC><C-w>-
+" inoremap <C-w>s <ESC>:<C-u>split<CR>
+" inoremap <C-w>_ <ESC>:<C-u>split<CR>
+" inoremap <C-w>v <ESC>:<C-u>vsplit<CR>
+" inoremap <C-w>\ <ESC>:<C-u>vsplit<CR>
+" inoremap <C-w>x <ESC>:<C-u>close<CR>
+" inoremap <C-w>z <ESC>:<C-u>only<CR>
+" inoremap <C-w>t <ESC><C-w>T
+" inoremap <C-w>c <ESC>:<C-u>tabnew<CR>
+" inoremap <C-w>n <ESC>:<C-u>tabnext<CR>
+" inoremap <C-w>p <ESC>:<C-u>tabprevious<CR>
+" inoremap <C-w>& <ESC>:<C-u>tabclose<CR>
 
 "" window, tab, buffer操作(terminal)
-tnoremap <C-[> <C-\><C-n>
-tnoremap <C-s> <Nop>
-tnoremap <C-s>f <C-\><C-n>:<C-u>bfirst<CR>
-tnoremap <C-s>d <C-\><C-n>:<C-u>bdelete<CR>
-tnoremap <C-s>b <C-\><C-n>:<C-u>bnext<CR>
-tnoremap <C-s>B <C-\><C-n>:<C-u>ls<CR>
-tnoremap <C-s>N <C-\><C-n>:<C-u>bnext<CR>
-tnoremap <C-s>P <C-\><C-n>:<C-u>bprevious<CR>
-tnoremap <C-j> <C-\><C-n>:<C-u>bprevious<CR>
-tnoremap <C-s>h <C-\><C-n><C-w>h
-tnoremap <C-s>j <C-\><C-n><C-w>j
-tnoremap <C-s>k <C-\><C-n><C-w>k
-tnoremap <C-s>l <C-\><C-n><C-w>l
-tnoremap <C-s>o <C-\><C-n><C-w>w
-"tnoremap <C-s>w <C-\><C-n><C-w>w
-tnoremap <C-s>> <C-\><C-n><C-w>>
-tnoremap <C-s>< <C-\><C-n><C-w><
-tnoremap <C-s>+ <C-\><C-n><C-w>+
-tnoremap <C-s>- <C-\><C-n><C-w>-
-tnoremap <C-s>= <C-\><C-n><C-w>=
-"tnoremap <C-s>O <C-\><C-n><C-w>=
-tnoremap <C-s>r <C-\><C-n><C-w>r
-tnoremap <C-s>R <C-\><C-n><C-w>R
-tnoremap <C-s>H <C-\><C-n><C-w>H
-tnoremap <C-s>J <C-\><C-n><C-w>J
-tnoremap <C-s>K <C-\><C-n><C-w>K
-tnoremap <C-s>L <C-\><C-n><C-w>L
-tnoremap <C-s>T <C-\><C-n><C-w>T
-"tnoremap <C-s>o <C-\><C-n><C-w>_<C-w>|
-tnoremap <C-s>s <C-\><C-n>:<C-u>split<CR>
-tnoremap <C-s>_ <C-\><C-n>:<C-u>split<CR>
-tnoremap <C-s>v <C-\><C-n>:<C-u>vsplit<CR>
-tnoremap <C-s>\ <C-\><C-n>:<C-u>vsplit<CR>
-tnoremap <C-s>x <C-\><C-n>:<C-u>quit<CR>
-tnoremap <C-s>a <C-\><C-n>:<C-u>quitall<CR>
-tnoremap <C-s>c <C-\><C-n>:<C-u>close<CR>
-tnoremap <C-s>ew <C-\><C-n>:<C-u>only<CR>
-tnoremap <C-s>t <C-\><C-n>:<C-u>tabnew<CR>
-tnoremap <C-s>n <C-\><C-n>:<C-u>tabnext<CR>
-tnoremap <C-s>p <C-\><C-n>:<C-u>tabprevious<CR>
-tnoremap <C-s>& <C-\><C-n>:<C-u>tabclose<CR>
-tnoremap <C-s>et <C-\><C-n>:<C-u>tabonly<CR>
+" tnoremap <C-w> <Nop>
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
+tnoremap <C-w>d <C-\><C-n>:<C-u>call BufferDeleteAndMove()<CR>
+tnoremap <C-w>D <C-\><C-n>:<C-u>bdelete<CR>
+tnoremap <C-w>f <C-\><C-n>:<C-u>bfirst<CR>
+tnoremap <C-w>b <C-\><C-n>:<C-u>buffer #<CR>
+tnoremap <C-w>o <C-\><C-n><C-w>w
+tnoremap <C-w>O <C-\><C-n><C-w>W
+tnoremap <C-w>u <C-\><C-n><C-w>p
+tnoremap <C-w>L <C-\><C-n><C-w>>
+tnoremap <C-w>H <C-\><C-n><C-w><
+tnoremap <C-w>K <C-\><C-n><C-w>+
+tnoremap <C-w>J <C-\><C-n><C-w>-
+tnoremap <C-w>s <C-\><C-n>:<C-u>split<CR>
+tnoremap <C-w>_ <C-\><C-n>:<C-u>split<CR>
+tnoremap <C-w>v <C-\><C-n>:<C-u>vsplit<CR>
+tnoremap <C-w>\ <C-\><C-n>:<C-u>vsplit<CR>
+tnoremap <C-w>x <C-\><C-n>:<C-u>close<CR>
+tnoremap <C-w>z <C-\><C-n>:<C-u>only<CR>
+tnoremap <C-w>t <C-\><C-n><C-w>T
+tnoremap <C-w>c <C-\><C-n>:<C-u>tabnew<CR>
+tnoremap <C-w>n <C-\><C-n>:<C-u>tabnext<CR>
+tnoremap <C-w>p <C-\><C-n>:<C-u>tabprevious<CR>
+tnoremap <C-w>& <C-\><C-n>:<C-u>tabclose<CR>
+
+
+"" save and quit
+nnoremap zz :<C-u>update<CR>
+nnoremap ZZ <Nop>
+nnoremap Zz ZZ
+nnoremap Zq :<C-u>quit<CR>
+nnoremap ZQ :<C-u>quit!<CR>
+nnoremap Za :<C-u>quitall<CR>
+nnoremap ZA :<C-u>quitall!<CR>
 
 
 "" terminal mode移行時にterminal-job modeにする
@@ -226,15 +218,51 @@ autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
 autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
 
 
-"" insert modeでのkeymappingをemacsに合わせる
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-d> <Delete>
+"" delete word
+tnoremap <C-w><C-w> <C-w>.<BS>
+nnoremap <C-w><C-w> "_dvb
+
+
+"" scroll
+nnoremap <C-j> <C-e>
+vnoremap <C-j> <C-e>
+onoremap <C-j> <C-e>
+nnoremap <C-k> <C-y>
+vnoremap <C-k> <C-y>
+onoremap <C-k> <C-y>
+
+
+"" add N
+nnoremap <C-p> <C-a>
+
+
+"" 行頭，行末移動
+nnoremap <C-a> ^
 inoremap <C-a> <C-o>^
+vnoremap <C-a> ^
+onoremap <C-a> ^
+cnoremap <C-a> <C-b>
+"i_Oから使うためにコマンド化
+nnoremap <C-e> :<C-u>normal $l<CR>
 inoremap <C-e> <C-o>$
+vnoremap <C-e> $
+onoremap <C-e> $
+
+
+"" insert&command modeでのkeymappingをemacsに合わせる
+inoremap <C-b> <Left>
+cnoremap <C-b> <Left>
+inoremap <C-f> <Right>
+cnoremap <C-f> <Right>
+inoremap <C-d> <Delete>
+cnoremap <C-d> <Delete>
 inoremap <C-k> <C-o>"_d$
 inoremap <C-y> <C-o>gp
+"" indent
 inoremap <C-q> <C-d>
+"" list candidate
+cnoremap <C-l> <C-d>
+
 
 "" insert modeでの移動・削除
 inoremap <C-g> <C-o>w
@@ -246,38 +274,41 @@ inoremap <A-j> <Down>
 inoremap <A-k> <Up>
 
 
-"" command mode
-"cnoremap <C-j> <Left>
-"cnoremap <C-k> <Right>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-d> <Delete>
-cnoremap <C-l> <C-d>
-cnoremap <C-a> <C-b>
-
-
 "" 空行追加．コメントは継続されず，移動もしない
-nnoremap gj :<C-u>call append(line('.'), '')<CR>
-nnoremap gk :<C-u>call append(line('.')-1, '')<CR>
+nnoremap <Leader>n :<C-u>call append(line('.'), '')<CR>
+nnoremap <Leader>N :<C-u>call append(line('.')-1, '')<CR>
 ""空行追加．コメント行のあとはコメントが継続する．移動もする．
-"nnoremap gj :o<ESC>
-"nnoremap gk :O<ESC>
-
-
-"" 行頭，行末移動
-nnoremap <C-b> ^
-vnoremap <C-b> ^
-onoremap <C-b> ^
-"nnoremap <C-f> $<Right>
-"i_Oから使うためにコマンド化
-nnoremap <C-f> :<C-u>normal $l<CR>
-vnoremap <C-f> $
-onoremap <C-f> $
+"nnoremap <Leader>n :o<ESC>
+"nnoremap <Leader>N :O<ESC>
 
 
 "" repeat command
-nnoremap c. q:k<CR>
+nnoremap g. q:k<CR>
 
 
-"" save
-nnoremap zz :<C-u>update<CR>
+"" search and replace prefix
+nnoremap gr :<C-u>%s///g<Left><Left>
+vnoremap gr :<C-u>'<,'>s///g<Left><Left>
+
+
+"" search mark spot
+nnoremap ' `
+
+
+"" onetime insert mode
+nnoremap q a<Space><ESC>r
+nnoremap Q i<Space><ESC>r
+nnoremap <C-q> q
+
+
+"" visual block replace
+vnoremap r dgvI
+
+
+"" strict search
+nnoremap \ /\<\><Left><Left>
+"" case sensitive search
+nnoremap g/ /\C
+"" delete search hilight
+nnoremap <Leader>/ :<C-u>nohlsearch<CR>
+

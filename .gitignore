@@ -1,4 +1,6 @@
 .nfs*
+.DS_Store
+.netrwhist
 
 dotfiles/runcoms/vim/.netrwhist
 dotfiles/runcoms/cache/*
