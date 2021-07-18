@@ -1,7 +1,7 @@
 nnoremap dF :<C-u>Deol -split=floating<CR>
-" nnoremap dv :<C-u>Deol -split=vertical<CR>
+nnoremap dv :<C-u>Deol -split=vertical<CR>
 nnoremap dh :<C-u>Deol -split=horizontal<CR>
-nnoremap dc :<C-u>Deol<CR><C-\><C-n><C-w>T
+nnoremap dc :<C-u>tabnew<CR>:Deol<CR>
 
 augroup MyDeol
   autocmd!
