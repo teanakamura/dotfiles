@@ -2,5 +2,5 @@
 nmap <Leader>c <Plug>(caw:hatpos:toggle)
 vmap <Leader>c <Plug>(caw:hatpos:toggle)
 " 行頭にコメントをトグル
-nmap <Leader>, <Plug>(caw:zeropos:toggle)
-vmap <Leader>, <Plug>(caw:zeropos:toggle)
+nmap <Leader>C <Plug>(caw:zeropos:toggle)
+vmap <Leader>C <Plug>(caw:zeropos:toggle)
