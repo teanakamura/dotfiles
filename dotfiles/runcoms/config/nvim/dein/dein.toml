@@ -2,17 +2,12 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = 'source ~/.config/nvim/plugins/nerdtree.vim'
+repo = 'lambdalisue/fern.vim'
+hook_add = 'source ~/.config/nvim/plugins/fern.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
-
-[[plugins]] 
-repo = 'Shougo/deoplete.nvim'
-if = 'has("python3")'
-hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -20,7 +15,7 @@ hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
 
 [[plugins]]
 repo = 'kshenoy/vim-signature'
-hook_add = 'source ~/.config/nvim/plugins/vim-signate.vim'
+hook_add = 'source ~/.config/nvim/plugins/vim-signature.vim'
 
 [[plugins]]
 repo = 'kana/vim-submode'
@@ -37,3 +32,15 @@ hook_add = 'source ~/.config/nvim/plugins/caw.vim'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = 'source ~/.config/nvim/plugins/vim-easymotion.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = 'source ~/.config/nvim/plugins/denite.vim'
+if = 'has("nvim")'
+if = 'has("python3")'
+depends = ['neomru.vim']
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+if = 'has("nvim")'
+
