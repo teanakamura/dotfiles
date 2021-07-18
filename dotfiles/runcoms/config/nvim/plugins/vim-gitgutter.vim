@@ -1,8 +1,9 @@
 set signcolumn=yes
 set updatetime=1000
 
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
+nmap [c <Nop>
+nmap [h <Plug>(GitGutterNextHunk)
+nmap [H <Plug>(GitGutterPrevHunk)
 
 nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
@@ -12,5 +13,3 @@ omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
-
-
