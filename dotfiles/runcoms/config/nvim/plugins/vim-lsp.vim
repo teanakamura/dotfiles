@@ -1,6 +1,8 @@
 " diagnostic
-let g:lsp_diagnostics_enabled = 0
+let g:lsp_auto_enable = 1
+let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_highlights_enabled = 1
 let g:lsp_signs_enabled = 1
 let g:lsp_signs_error = {'text': '✗'}
 let g:lsp_signs_warning = {'text': '‼'}
@@ -8,37 +10,73 @@ let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_enabled = 1
 
+"highlight
+hi LspErrorVirtualText guifg=blue
+hi LspWarningVirtualText guifg=blue
+hi LspInformationVirtualText guifg=blue
+hi LspHintVirtualText guifg=blue
+
+
 " dubug
 let g:lsp_log_verbose = 0  " デバッグ用ログを出力
-let g:lsp_log_file = expand('~/.cache/tmp/vim-lsp.log')  " ログ出力のPATHを設定
+let g:lsp_log_file = expand('~/.cache/vim-lsp/vim-lsp.log')  " ログ出力のPATHを設定
 
 " configurations of each language server
-augroup MyLsp
-  autocmd!
-  if executable('pyls')
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': { server_info -> ['pyls'] },
-        \ 'whitelist': ['python'],
-        \ 'workspace_config': {'pyls': {'plugins': {
-        \   'jedi_definition': {'enabled': v:true, 'follow_imports': v:true, 'follow_builtin_imports': v:true},
-        \ }}}
-        \})
-    autocmd FileType python call s:configure_lsp()
+let g:lsp_buffer_diagnostics_enabled = 0  " custom variable
+function! ToggleDiagnostics() abort
+  " if !g:lsp_diagnostics_enabled
+  "   let g:lsp_diagnostics_enabled = !g:lsp_diagnostics_enabled
+  "   call lsp#enable()
+  " endif
+  let g:lsp_buffer_diagnostics_enabled = !g:lsp_buffer_diagnostics_enabled
+  if g:lsp_buffer_diagnostics_enabled
+    call lsp#enable_diagnostics_for_buffer()
+  else
+    call lsp#disable_diagnostics_for_buffer()
   endif
-augroup END
+endfunction
 
 function! s:configure_lsp() abort
+  if !g:lsp_buffer_diagnostics_enabled
+    call lsp#disable_diagnostics_for_buffer()
+  endif
   setlocal omnifunc=lsp#complete   " オムニ補完を有効化
   " LSP用にマッピング
+  nnoremap <buffer> K :<C-u>LspHover<CR>
   nnoremap <buffer> <C-]> :<C-u>LspDefinition<CR>
-  nnoremap <buffer> gd :<C-u>LspDefinition<CR>
+  nnoremap <buffer> gd :<C-u>LspPeekDefinition<CR>
   nnoremap <buffer> gD :<C-u>LspReferences<CR>
   nnoremap <buffer> gs :<C-u>LspDocumentSymbol<CR>
   nnoremap <buffer> gS :<C-u>LspWorkspaceSymbol<CR>
-  nnoremap <buffer> gQ :<C-u>LspDocumentFormat<CR>
-  vnoremap <buffer> gQ :LspDocumentRangeFormat<CR>
-  nnoremap <buffer> K :<C-u>LspHover<CR>
-  nnoremap <buffer> <F1> :<C-u>LspImplementation<CR>
-  nnoremap <buffer> <F2> :<C-u>LspRename<CR>
+  nnoremap <buffer> gq :<C-u>LspDocumentFormat<CR>
+  vnoremap <buffer> gq :<C-u>LspDocumentRangeFormat<CR>
+  nnoremap <buffer> gR :<C-u>LspRename<CR>
+  " nnoremap <buffer> <F1> :<C-u>LspImplementation<CR>
+  nnoremap <buffer> gL :<C-u>call ToggleDiagnostics()<CR>
 endfunction
+
+let g:pyls_path = fnamemodify(g:python3_host_prog, ':h').'/'.'pyls'
+augroup MyLsp
+  autocmd!
+  if executable(g:pyls_path)
+    let s:pyls_config = {'pyls': {'plugins': {
+        \   'jedi_definition': {
+        \     'enabled': v:true,
+        \     'follow_imports': v:true,
+        \     'follow_builtin_imports': v:true
+        \   },
+        \   'pycodestyle': {'enabled': v:true},
+        \   'pydocstyle': {'enabled': v:false},
+        \   'pylint': {'enabled': v:false},
+        \   'flake8': {'enabled': v:true},
+        \   'pyls_mypy': {'enabled': v:true},
+        \ }}}
+    autocmd User lsp_setup call lsp#register_server({
+        \   'name': 'pyls',
+        \   'cmd': { server_info -> [g:pyls_path] },
+        \   'whitelist': ['python'],
+        \   'workspace_config': s:pyls_config
+        \ })
+    autocmd FileType python call s:configure_lsp()
+  endif
+augroup END
