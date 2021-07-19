@@ -32,15 +32,3 @@ hook_add = 'source ~/.config/nvim/plugins/caw.vim'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 hook_add = 'source ~/.config/nvim/plugins/vim-easymotion.vim'
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = 'source ~/.config/nvim/plugins/denite.vim'
-if = 'has("nvim")'
-if = 'has("python3")'
-depends = ['neomru.vim']
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-if = 'has("nvim")'
-

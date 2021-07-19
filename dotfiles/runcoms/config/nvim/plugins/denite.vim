@@ -56,10 +56,7 @@ let s:denite_option_array = []
 for [key, value] in items(s:denite_default_options)
   call add(s:denite_option_array, '-'.key.'='.value)
 endfor
-" loadが遅くて？エラー吐くのでロード済みかチェック
-if dein#is_sourced('denite.nvim')
-  call denite#custom#option('default', s:denite_default_options)
-endif
+call denite#custom#option('default', s:denite_default_options)
 
 
 "" Change source settings
