@@ -67,14 +67,15 @@ let mapleader = "\<Space>"
 
 
 "" escape
-nmap <C-s> <ESC>
-imap <C-s> <ESC>
-vmap <C-s> <ESC>
-xmap <C-s> <ESC>
-omap <C-s> <ESC>
-tmap <C-s> <ESC>
-tmap <C-[> <ESC>
+nnoremap <C-s> <ESC>
+inoremap <C-s> <ESC>
+vnoremap <C-s> <ESC>
+xnoremap <C-s> <ESC>
+onoremap <C-s> <ESC>
+tnoremap <C-s> <ESC>
+tnoremap <C-[> <ESC>
 tnoremap <ESC> <C-\><C-n>
+cnoremap <C-s> <ESC>
 
 
 "" cut & not save
@@ -100,14 +101,13 @@ vnoremap t d
 nnoremap T dd
 vnoremap T d
 "" yank
-vnoremap Y "+y
+vnoremap y "+y
 nnoremap Y "+yy
 "" yank & move
-vnoremap gyy "+ygv<ESC>
-vnoremap gY "+ygv<ESC>
+vnoremap gy "+ygv`><ESC>
 
 
-"" window, tab, buffer操作(normal)
+"" window, tab, buffer operation(normal)
 function BufferDeleteAndMove() abort
   let current_buffer = bufnr()
   execute "bnext"
@@ -121,9 +121,8 @@ endfunction
 nnoremap <C-w>d :<C-u>call BufferDeleteAndMove()<CR>
 nnoremap <C-w>D :<C-u>bdelete<CR>
 nnoremap <C-w>f :<C-u>bfirst<CR>
-nnoremap <C-w>b :<C-u>buffer #<CR>
 nnoremap <C-l> :<C-u>bnext<CR>
-nnoremap <C-h> :<C-u>bprevious<CR>
+nnoremap <C-h> :<C-u>buffer #<CR>
 nnoremap <C-w>o <C-w>w
 nnoremap <C-w>O <C-w>W
 nnoremap <C-w>L <C-w>>
@@ -142,7 +141,7 @@ nnoremap <C-w>n :<C-u>tabnext<CR>
 nnoremap <C-w>p :<C-u>tabprevious<CR>
 nnoremap <C-w>& :<C-u>tabclose<CR>
 
-"" window, tab, buffer操作(insert)
+"" window, tab, buffer operation(insert)
 " inoremap <C-w> <Nop>
 " inoremap <C-w>h <ESC><C-w>h
 " inoremap <C-w>j <ESC><C-w>j
@@ -171,7 +170,7 @@ nnoremap <C-w>& :<C-u>tabclose<CR>
 " inoremap <C-w>p <ESC>:<C-u>tabprevious<CR>
 " inoremap <C-w>& <ESC>:<C-u>tabclose<CR>
 
-"" window, tab, buffer操作(terminal)
+"" window, tab, buffer operation(terminal)
 " tnoremap <C-w> <Nop>
 tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
@@ -201,7 +200,7 @@ tnoremap <C-w>p <C-\><C-n>:<C-u>tabprevious<CR>
 tnoremap <C-w>& <C-\><C-n>:<C-u>tabclose<CR>
 
 
-"" save and quit
+"" save or quit
 nnoremap zz :<C-u>update<CR>
 nnoremap ZZ <Nop>
 nnoremap Zz ZZ
@@ -211,18 +210,6 @@ nnoremap Za :<C-u>quitall<CR>
 nnoremap ZA :<C-u>quitall!<CR>
 
 
-"" terminal mode移行時にterminal-job modeにする
-autocmd TermOpen * startinsert
-autocmd TermEnter * startinsert
-autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
-autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
-
-
-"" delete word
-tnoremap <C-w><C-w> <C-w>.<BS>
-nnoremap <C-w><C-w> "_dvb
-
-
 "" scroll
 nnoremap <C-j> <C-e>
 vnoremap <C-j> <C-e>
@@ -230,80 +217,59 @@ onoremap <C-j> <C-e>
 nnoremap <C-k> <C-y>
 vnoremap <C-k> <C-y>
 onoremap <C-k> <C-y>
+nnoremap g<C-j> <C-e>j
+vnoremap g<C-j> <C-e>j
+onoremap g<C-j> <C-e>j
+nnoremap g<C-k> <C-y>k
+vnoremap g<C-k> <C-y>k
+onoremap g<C-k> <C-y>k
 
 
-"" add N
-nnoremap <C-p> <C-a>
-
-
-"" 行頭，行末移動
+"" emacs like key mappings
 nnoremap <C-a> ^
 inoremap <C-a> <C-o>^
 vnoremap <C-a> ^
 onoremap <C-a> ^
 cnoremap <C-a> <C-b>
-"i_Oから使うためにコマンド化
+
 nnoremap <C-e> :<C-u>normal $l<CR>
 inoremap <C-e> <C-o>$
-vnoremap <C-e> $
-onoremap <C-e> $
+vnoremap <C-e> g_
+onoremap <C-e> g_
 
+nnoremap <C-w><C-w> "_dvB
+tnoremap <C-w><C-w> <C-w>.<BS>
 
-"" insert&command modeでのkeymappingをemacsに合わせる
 inoremap <C-b> <Left>
 cnoremap <C-b> <Left>
+
 inoremap <C-f> <Right>
 cnoremap <C-f> <Right>
+
 inoremap <C-d> <Delete>
 cnoremap <C-d> <Delete>
+
 inoremap <C-k> <C-o>"_d$
-inoremap <C-y> <C-o>gp
-"" indent
-inoremap <C-q> <C-d>
-"" list candidate
-cnoremap <C-l> <C-d>
+cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
 
 
-"" insert modeでの移動・削除
-inoremap <C-g> <C-o>w
-inoremap <C-v> <C-o>b
-"inoremap <C-l> <C-o>e
-inoremap <C-l> <C-o>"_dw
-inoremap <A-i> <C-o>"_diw
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
+"" custom normal, visual, operation pending
+"" nop
+nnoremap <C-b> <Nop>
+nnoremap <C-f> <Nop>
 
+"" add N
+nnoremap <C-p> <C-a>
+
+"" restore to the last write status
+nnoremap U :<C-u>earlier 1f<CR>
 
 "" 空行追加．コメントは継続されず，移動もしない
 nnoremap <Leader>n :<C-u>call append(line('.'), '')<CR>
 nnoremap <Leader>N :<C-u>call append(line('.')-1, '')<CR>
-""空行追加．コメント行のあとはコメントが継続する．移動もする．
-"nnoremap <Leader>n :o<ESC>
-"nnoremap <Leader>N :O<ESC>
-
-
-"" repeat command
-nnoremap g. q:k<CR>
-
-
-"" search and replace prefix
-nnoremap gr :<C-u>%s///g<Left><Left>
-vnoremap gr :<C-u>'<,'>s///g<Left><Left>
-
-
-"" search mark spot
-nnoremap ' `
-
-
-"" onetime insert mode
-nnoremap q a<Space><ESC>r
-nnoremap Q i<Space><ESC>r
-nnoremap <C-q> q
-
-
-"" visual block replace
-vnoremap r dgvI
-
+" ""空行追加．コメント行のあとはコメントが継続する．移動もする．
+" nnoremap <Leader>n :o<ESC>
+" nnoremap <Leader>N :O<ESC>
 
 "" strict search
 nnoremap \ /\<\><Left><Left>
@@ -312,3 +278,54 @@ nnoremap g/ /\C
 "" delete search hilight
 nnoremap <Leader>/ :<C-u>nohlsearch<CR>
 
+"" search mark spot
+nnoremap ' `
+
+"" onetime insert mode
+nnoremap q a<Space><ESC>r
+nnoremap Q i<Space><ESC>r
+nnoremap <C-q> q
+
+"" repeat command
+nnoremap g. q:k<CR>
+
+"" command line window
+nnoremap c: q:
+nnoremap c/ q/
+nnoremap c? q?
+
+"" search and replace prefix
+nnoremap gr :<C-u>%s///g<Left><Left>
+
+"" visual replace prefix
+vnoremap gr :<C-u>'<,'>s///g<Left><Left><Left>
+
+"" visual block replace
+vnoremap r dgvI
+
+
+"" custom insert & command & terminal mode
+inoremap <C-l> <C-o>"_dd
+cmap <C-l> <C-u><C-k>
+inoremap <C-g> <C-o>
+inoremap <C-t> <Left><C-o>"zx<Left><C-r>z<Right>
+inoremap <C-r> <C-r>*
+inoremap <C-y> <C-o>diw
+inoremap <A-f> <C-o>f
+inoremap <A-b> <C-o>F
+inoremap <C-]> <C-o>;
+" cnoremap <C-x> <C-d>
+" inoremap <C-g> <C-o>w
+" inoremap <C-v> <C-o>b
+" inoremap <C-l> <C-o>e
+" inoremap <C-l> <C-o>"_dw
+" inoremap <A-i> <C-o>"_diw
+" inoremap <A-j> <Down>
+" inoremap <A-k> <Up>
+
+
+"" terminal mode移行時にterminal-job modeにする
+autocmd TermOpen * startinsert
+autocmd TermEnter * startinsert
+autocmd WinEnter * if &buftype ==# 'terminal' | startinsert | endif
+autocmd BufEnter * if &buftype ==# 'terminal' | startinsert | endif
