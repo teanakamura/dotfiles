@@ -70,3 +70,9 @@ call submode#enter_with('hunkJump', 'n', '', '[h', ':<C-u>GitGutterNextHunk<CR>'
 call submode#enter_with('hunkJump', 'n', '', '[H', ':<C-u>GitGutterPrevHunk<CR>')
 call submode#map('hunkJump', 'n', '', 'h', ':<C-u>GitGutterNextHunk<CR>z.')
 call submode#map('hunkJump', 'n', '', 'H', ':<C-u>GitGutterPrevHunk<CR>z.')
+
+
+"" insert mode repeat f search (require vim-easymotion)
+call submode#enter_with('i_fsearch', 'i', '', '<C-]>', '<C-o>:<C-u>call Jump_like_as_prev_jump(1)<CR>')
+call submode#map('i_fsearch', 'i', '', '<C-]>', '<C-o>:<C-u>call Jump_like_as_prev_jump(1)<CR>')
+call submode#map('i_fsearch', 'i', '', '<C-[>', '<C-o>:<C-u>call Jump_like_as_prev_jump(0)<CR>')
