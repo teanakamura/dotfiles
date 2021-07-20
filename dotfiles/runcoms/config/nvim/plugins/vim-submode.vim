@@ -22,6 +22,12 @@ call submode#enter_with('indent', 'n', '', '>>', '>>')
 call submode#enter_with('indent', 'n', '', '<<', '<<')
 call submode#map('indent', 'n', '', '>', '>>')
 call submode#map('indent', 'n', '', '<', '<<')
+call submode#enter_with('i_indent', 'i', '', '<C-o>>', '<C-o>>>')
+call submode#enter_with('i_indent', 'i', '', '<C-o><', '<C-o><<')
+call submode#enter_with('i_indent', 'i', '', '<C-g>>', '<C-o>>>')
+call submode#enter_with('i_indent', 'i', '', '<C-g><', '<C-o><<')
+call submode#map('i_indent', 'i', '', '>', '<C-o>>>')
+call submode#map('i_indent', 'i', '', '<', '<C-o><<')
 
 
 "" insert new line
@@ -36,6 +42,13 @@ call submode#enter_with('moveOnScreen', 'n', '', 'gj', 'gj')
 call submode#enter_with('moveOnScreen', 'n', '', 'gk', 'gk')
 call submode#map('moveOnScreen', 'n', '', 'j', 'gj')
 call submode#map('moveOnScreen', 'n', '', 'k', 'gk')
+
+
+"" screen up/down
+call submode#enter_with('screenUpDown', 'n', '', 'g<C-j>', '<C-e>j')
+call submode#enter_with('screenUpDown', 'n', '', 'g<C-k>', '<C-y>k')
+call submode#map('screenUpDown', 'n', '', '<C-j>', '<C-e>j')
+call submode#map('screenUpDown', 'n', '', '<C-k>', '<C-y>k')
 
 
 "" delete word
@@ -58,18 +71,36 @@ call submode#map('sectionJump', 'n', '', '[', '[[z.')
 call submode#map('sectionJump', 'n', '', ']', ']]z.')
 
 
-"" mark jump
+"" mark jump (require vim-signature)
 call submode#enter_with('markJump', 'n', '', '[m', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>')
 call submode#enter_with('markJump', 'n', '', '[M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>')
 call submode#map('markJump', 'n', '', 'm', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>z.')
 call submode#map('markJump', 'n', '', 'M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>z.')
 
 
-"" git hunk jump
+"" git hunk jump (require vim-gitgutter)
 call submode#enter_with('hunkJump', 'n', '', '[h', ':<C-u>GitGutterNextHunk<CR>')
 call submode#enter_with('hunkJump', 'n', '', '[H', ':<C-u>GitGutterPrevHunk<CR>')
 call submode#map('hunkJump', 'n', '', 'h', ':<C-u>GitGutterNextHunk<CR>z.')
 call submode#map('hunkJump', 'n', '', 'H', ':<C-u>GitGutterPrevHunk<CR>z.')
+
+
+"" insert mode scroll
+call submode#enter_with('i_scroll', 'i', '', '<C-o><C-j>', '<C-o><C-y>')
+call submode#enter_with('i_scroll', 'i', '', '<C-o><C-k>', '<C-o><C-e>')
+call submode#enter_with('i_scroll', 'i', '', '<C-g><C-j>', '<C-o><C-y>')
+call submode#enter_with('i_scroll', 'i', '', '<C-g><C-k>', '<C-o><C-e>')
+call submode#map('i_scroll', 'i', '', '<C-j>', '<C-o><C-y>')
+call submode#map('i_scroll', 'i', '', '<C-k>', '<C-o><C-e>')
+
+
+"" insret mode move
+call submode#enter_with('i_move', 'i', '', '<C-o>j', '<C-o>j')
+call submode#enter_with('i_move', 'i', '', '<C-o>k', '<C-o>k')
+call submode#enter_with('i_move', 'i', '', '<C-g>j', '<C-o>j')
+call submode#enter_with('i_move', 'i', '', '<C-g>k', '<C-o>k')
+call submode#map('i_move', 'i', '', 'j', '<C-o>j')
+call submode#map('i_move', 'i', '', 'k', '<C-o>k')
 
 
 "" insert mode repeat f search (require vim-easymotion)

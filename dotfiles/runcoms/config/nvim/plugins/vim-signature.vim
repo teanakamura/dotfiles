@@ -21,6 +21,10 @@ let g:SignatureMap = {
         \ 'ListBufferMarks'    :  "m/",
         \ 'ListBufferMarkers'  :  "m?"
         \ }
+if dein#check_install('vim-submode') == 0
+  let g:SignatureMap['GotoNextSpotByPos'] = ""
+  let g:SignatureMap['GotoPrevSpotByPos'] = ""
+endif
 
 let g:SignatureMorkTextHLDynamic = 1
 nnoremap m, :<C-u>wshada!<CR>
