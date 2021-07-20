@@ -20,8 +20,10 @@ if dein#load_state('~/.cache/dein')
   "" 適宜 call dein#clear_state()
   " call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   let s:toml = '~/.config/nvim/dein/dein.toml'
+  let s:lazy_toml_vim_enter = '~/.config/nvim/dein/dein_lazy_vim_enter.toml'
   let s:lazy_toml = '~/.config/nvim/dein/dein_lazy.toml'
   call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml_vim_enter, {'lazy': 1})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
   call dein#end()

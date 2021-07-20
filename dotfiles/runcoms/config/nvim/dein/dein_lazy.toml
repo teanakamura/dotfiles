@@ -30,14 +30,5 @@ on_ft = 'python'
 depends = ['vim-lsp', 'deoplete-vim-lsp']
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_source = 'source ~/.config/nvim/plugins/denite.vim'
-on_event = 'VimEnter'
-if = 'has("nvim")'
-if = 'has("python3")'
-depends = ['neomru.vim']
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'
 if = 'has("nvim")'
-

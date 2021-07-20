@@ -10,10 +10,6 @@ repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
-
-[[plugins]]
 repo = 'kshenoy/vim-signature'
 hook_add = 'source ~/.config/nvim/plugins/vim-signature.vim'
 
@@ -28,7 +24,3 @@ hook_add = 'source ~/.config/nvim/plugins/deol.vim'
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = 'source ~/.config/nvim/plugins/caw.vim'
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-hook_add = 'source ~/.config/nvim/plugins/vim-easymotion.vim'
