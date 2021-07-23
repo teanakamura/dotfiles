@@ -7,9 +7,9 @@ if dein#check_install('vim-submode') != 0
   nmap [H <Plug>(GitGutterPrevHunk)
 endif
 
-nmap ghs <Plug>(GitGutterStageHunk)
-nmap ghu <Plug>(GitGutterUndoHunk)
-nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap <Leader>gs <Plug>(GitGutterStageHunk)
+nmap <Leader>gu <Plug>(GitGutterUndoHunk)
+nmap <Leader>gp <Plug>(GitGutterPreviewHunk)
 
 omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)

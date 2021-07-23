@@ -38,17 +38,17 @@ call submode#map('insertNewLine', 'n', '', 'N', ':<C-u>call append(line(".")-1, 
 
 
 "" move screen line
-call submode#enter_with('moveOnScreen', 'n', '', 'gj', 'gj')
-call submode#enter_with('moveOnScreen', 'n', '', 'gk', 'gk')
-call submode#map('moveOnScreen', 'n', '', 'j', 'gj')
-call submode#map('moveOnScreen', 'n', '', 'k', 'gk')
+call submode#enter_with('moveOnScreen', 'nv', '', 'gj', 'gj')
+call submode#enter_with('moveOnScreen', 'nv', '', 'gk', 'gk')
+call submode#map('moveOnScreen', 'nv', '', 'j', 'gj')
+call submode#map('moveOnScreen', 'nv', '', 'k', 'gk')
 
 
 "" screen up/down
-call submode#enter_with('screenUpDown', 'n', '', 'g<C-j>', '<C-e>j')
-call submode#enter_with('screenUpDown', 'n', '', 'g<C-k>', '<C-y>k')
-call submode#map('screenUpDown', 'n', '', '<C-j>', '<C-e>j')
-call submode#map('screenUpDown', 'n', '', '<C-k>', '<C-y>k')
+call submode#enter_with('screenUpDown', 'nv', '', 'g<C-j>', '<C-e>j')
+call submode#enter_with('screenUpDown', 'nv', '', 'g<C-k>', '<C-y>k')
+call submode#map('screenUpDown', 'nv', '', '<C-j>', '<C-e>j')
+call submode#map('screenUpDown', 'nv', '', '<C-k>', '<C-y>k')
 
 
 "" delete word

@@ -1,4 +1,5 @@
 nnoremap <C-n> :<C-u>Fern . -reveal=% -drawer -toggle -width=40<CR>
+nnoremap <Leader><C-n> :<C-u>Fern %:h -drawer -width=40<CR>
 
 function! s:init_fern() abort
   nmap <buffer> ZZ :<C-u>quit<CR>ZZ
