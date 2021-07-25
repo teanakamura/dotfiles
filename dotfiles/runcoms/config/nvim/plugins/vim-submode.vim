@@ -1,6 +1,6 @@
 let g:submode_always_show_submode = 1
-let g:submode_timeout = 1
-let g:submode_timeoutlen = 3000
+let g:submode_timeout = 0
+" let g:submode_timeoutlen = 3000
 let g:submode_keep_leaving_key = 1
 
 
@@ -83,6 +83,13 @@ call submode#enter_with('hunkJump', 'n', '', '[h', ':<C-u>GitGutterNextHunk<CR>'
 call submode#enter_with('hunkJump', 'n', '', '[H', ':<C-u>GitGutterPrevHunk<CR>')
 call submode#map('hunkJump', 'n', '', 'h', ':<C-u>GitGutterNextHunk<CR>z.')
 call submode#map('hunkJump', 'n', '', 'H', ':<C-u>GitGutterPrevHunk<CR>z.')
+
+
+"" grep jump (require denite)
+call submode#enter_with('grepJump', 'n', '', 'dgn', ':<C-u>Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately<CR>')
+call submode#enter_with('grepJump', 'n', '', 'dgN', ':<C-u>Denite -resume -buffer-name=grep -cursor-pos=-1 -immediately<CR>')
+call submode#map('grepJump', 'n', '', 'n', ':<C-u>Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately<CR>')
+call submode#map('grepJump', 'n', '', 'N', ':<C-u>Denite -resume -buffer-name=grep -cursor-pos=-1 -immediately<CR>')
 
 
 "" insert mode scroll

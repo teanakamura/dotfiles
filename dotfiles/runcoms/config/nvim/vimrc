@@ -113,93 +113,99 @@ function BufferDeleteAndMove() abort
   execute "bnext"
   execute "bdelete".current_buffer
 endfunction
-" nnoremap <C-w> <Nop>
-" nnoremap <C-w>h <C-w>h
-" nnoremap <C-w>j <C-w>j
-" nnoremap <C-w>k <C-w>k
-" nnoremap <C-w>l <C-w>l
-nnoremap <C-w>d :<C-u>call BufferDeleteAndMove()<CR>
-nnoremap <C-w>D :<C-u>bdelete<CR>
-nnoremap <C-w>f :<C-u>bfirst<CR>
+nnoremap [window] <Nop>
+nmap <C-w> [window]
+" nnoremap [window] <Nop>
+" nnoremap [window]h <C-w>h
+" nnoremap [window]j <C-w>j
+" nnoremap [window]k <C-w>k
+" nnoremap [window]l <C-w>l
+nnoremap [window]d :<C-u>call BufferDeleteAndMove()<CR>
+nnoremap [window]D :<C-u>bdelete<CR>
+nnoremap [window]f :<C-u>bfirst<CR>
 nnoremap <C-b>  :<C-u>buffer #<CR>
 nnoremap <C-l>  :<C-u>bnext<CR>
 nnoremap <C-h>  :<C-u>bprev<CR>
-nnoremap <C-w>o <C-w>w
-nnoremap <C-w>O <C-w>W
-nnoremap <C-w>L <C-w>>
-nnoremap <C-w>H <C-w><
-nnoremap <C-w>K <C-w>+
-nnoremap <C-w>J <C-w>-
-" nnoremap <C-w>s <C-w>s
-nnoremap <C-w>_ :<C-u>split<CR>
-" nnoremap <C-w>v <C-w>v
-nnoremap <C-w>\ :<C-u>vsplit<CR>
-nnoremap <C-w>x :<C-u>close<CR>
-nnoremap <C-w>z :<C-u>only<CR>
-nnoremap <C-w>t <C-w>T 
-nnoremap <C-w>c :<C-u>tabnew<CR>
-nnoremap <C-w>n :<C-u>tabnext<CR>
-nnoremap <C-w>p :<C-u>tabprevious<CR>
-nnoremap <C-w>& :<C-u>tabclose<CR>
+nnoremap [window]o <C-w>w
+nnoremap [window]O <C-w>W
+nnoremap [window]L <C-w>>
+nnoremap [window]H <C-w><
+nnoremap [window]K <C-w>+
+nnoremap [window]J <C-w>-
+" nnoremap [window]s <C-w>s
+nnoremap [window]_ :<C-u>split<CR>
+" nnoremap [window]v <C-w>v
+nnoremap [window]\ :<C-u>vsplit<CR>
+nnoremap [window]x :<C-u>close<CR>
+nnoremap [window]z :<C-u>only<CR>
+nnoremap [window]t <C-w>T 
+nnoremap [window]c :<C-u>tabnew<CR>
+nnoremap [window]n :<C-u>tabnext<CR>
+nnoremap [window]p :<C-u>tabprevious<CR>
+nnoremap [window]& :<C-u>tabclose<CR>
 
 "" window, tab, buffer operation(insert)
 " inoremap <C-w> <Nop>
-" inoremap <C-w>h <ESC><C-w>h
-" inoremap <C-w>j <ESC><C-w>j
-" inoremap <C-w>k <ESC><C-w>k
-" inoremap <C-w>l <ESC><C-w>l
-" inoremap <C-w>d <ESC>:<C-u>call BufferDeleteAndMove()<CR>
-" inoremap <C-w>D <ESC>:<C-u>bdelete<CR>
-" inoremap <C-w>f <ESC>:<C-u>bfirst<CR>
-" inoremap <C-w>b <ESC>:<C-u>buffer #<CR>
-" inoremap <C-w>o <ESC><C-w>w
-" inoremap <C-w>O <ESC><C-w>W
-" inoremap <C-w>u <ESC><C-w>p
-" inoremap <C-w>L <ESC><C-w>>
-" inoremap <C-w>H <ESC><C-w><
-" inoremap <C-w>K <ESC><C-w>+
-" inoremap <C-w>J <ESC><C-w>-
-" inoremap <C-w>s <ESC>:<C-u>split<CR>
-" inoremap <C-w>_ <ESC>:<C-u>split<CR>
-" inoremap <C-w>v <ESC>:<C-u>vsplit<CR>
-" inoremap <C-w>\ <ESC>:<C-u>vsplit<CR>
-" inoremap <C-w>x <ESC>:<C-u>close<CR>
-" inoremap <C-w>z <ESC>:<C-u>only<CR>
-" inoremap <C-w>t <ESC><C-w>T
-" inoremap <C-w>c <ESC>:<C-u>tabnew<CR>
-" inoremap <C-w>n <ESC>:<C-u>tabnext<CR>
-" inoremap <C-w>p <ESC>:<C-u>tabprevious<CR>
-" inoremap <C-w>& <ESC>:<C-u>tabclose<CR>
+" inoremap [window] <Nop>
+" imap <C-w> [window]
+" inoremap [window]h <ESC><C-w>h
+" inoremap [window]j <ESC><C-w>j
+" inoremap [window]k <ESC><C-w>k
+" inoremap [window]l <ESC><C-w>l
+" inoremap [window]d <ESC>:<C-u>call BufferDeleteAndMove()<CR>
+" inoremap [window]D <ESC>:<C-u>bdelete<CR>
+" inoremap [window]f <ESC>:<C-u>bfirst<CR>
+" inoremap [window]b <ESC>:<C-u>buffer #<CR>
+" inoremap [window]o <ESC><C-w>w
+" inoremap [window]O <ESC><C-w>W
+" inoremap [window]u <ESC><C-w>p
+" inoremap [window]L <ESC><C-w>>
+" inoremap [window]H <ESC><C-w><
+" inoremap [window]K <ESC><C-w>+
+" inoremap [window]J <ESC><C-w>-
+" inoremap [window]s <ESC>:<C-u>split<CR>
+" inoremap [window]_ <ESC>:<C-u>split<CR>
+" inoremap [window]v <ESC>:<C-u>vsplit<CR>
+" inoremap [window]\ <ESC>:<C-u>vsplit<CR>
+" inoremap [window]x <ESC>:<C-u>close<CR>
+" inoremap [window]z <ESC>:<C-u>only<CR>
+" inoremap [window]t <ESC><C-w>T
+" inoremap [window]c <ESC>:<C-u>tabnew<CR>
+" inoremap [window]n <ESC>:<C-u>tabnext<CR>
+" inoremap [window]p <ESC>:<C-u>tabprevious<CR>
+" inoremap [window]& <ESC>:<C-u>tabclose<CR>
 
 "" window, tab, buffer operation(terminal)
 " tnoremap <C-w> <Nop>
-tnoremap <C-w>h <C-\><C-n><C-w>h
-tnoremap <C-w>j <C-\><C-n><C-w>j
-tnoremap <C-w>k <C-\><C-n><C-w>k
-tnoremap <C-w>l <C-\><C-n><C-w>l
-tnoremap <C-w>d <C-\><C-n>:<C-u>call BufferDeleteAndMove()<CR>
-tnoremap <C-w>D <C-\><C-n>:<C-u>bdelete<CR>
-tnoremap <C-w>f <C-\><C-n>:<C-u>bfirst<CR>
-tnoremap <C-w>b <C-\><C-n>:<C-u>buffer #<CR>
-tnoremap <C-w>o <C-\><C-n><C-w>w
-tnoremap <C-w>O <C-\><C-n><C-w>W
-tnoremap <C-w>u <C-\><C-n><C-w>p
-tnoremap <C-w>L <C-\><C-n><C-w>>
-tnoremap <C-w>H <C-\><C-n><C-w><
-tnoremap <C-w>K <C-\><C-n><C-w>+
-tnoremap <C-w>J <C-\><C-n><C-w>-
-tnoremap <C-w>s <C-\><C-n>:<C-u>split<CR>
-tnoremap <C-w>_ <C-\><C-n>:<C-u>split<CR>
-tnoremap <C-w>v <C-\><C-n>:<C-u>vsplit<CR>
-tnoremap <C-w>\ <C-\><C-n>:<C-u>vsplit<CR>
-tnoremap <C-w>x <C-\><C-n>:<C-u>close<CR>
+tnoremap [window] <Nop>
+tmap <C-w> [window]
+tnoremap [window]h <C-\><C-n><C-w>h
+tnoremap [window]j <C-\><C-n><C-w>j
+tnoremap [window]k <C-\><C-n><C-w>k
+tnoremap [window]l <C-\><C-n><C-w>l
+tnoremap [window]d <C-\><C-n>:<C-u>call BufferDeleteAndMove()<CR>
+tnoremap [window]D <C-\><C-n>:<C-u>bdelete<CR>
+tnoremap [window]f <C-\><C-n>:<C-u>bfirst<CR>
+tnoremap [window]b <C-\><C-n>:<C-u>buffer #<CR>
+tnoremap [window]o <C-\><C-n><C-w>w
+tnoremap [window]O <C-\><C-n><C-w>W
+tnoremap [window]u <C-\><C-n><C-w>p
+tnoremap [window]L <C-\><C-n><C-w>>
+tnoremap [window]H <C-\><C-n><C-w><
+tnoremap [window]K <C-\><C-n><C-w>+
+tnoremap [window]J <C-\><C-n><C-w>-
+tnoremap [window]s <C-\><C-n>:<C-u>split<CR>
+tnoremap [window]_ <C-\><C-n>:<C-u>split<CR>
+tnoremap [window]v <C-\><C-n>:<C-u>vsplit<CR>
+tnoremap [window]\ <C-\><C-n>:<C-u>vsplit<CR>
+tnoremap [window]x <C-\><C-n>:<C-u>close<CR>
 tnoremap <C-l>  <C-\><C-n>:<C-u>close<CR>
-tnoremap <C-w>z <C-\><C-n>:<C-u>only<CR>
-tnoremap <C-w>t <C-\><C-n><C-w>T
-tnoremap <C-w>c <C-\><C-n>:<C-u>tabnew<CR>
-tnoremap <C-w>n <C-\><C-n>:<C-u>tabnext<CR>
-tnoremap <C-w>p <C-\><C-n>:<C-u>tabprevious<CR>
-tnoremap <C-w>& <C-\><C-n>:<C-u>tabclose<CR>
+tnoremap [window]z <C-\><C-n>:<C-u>only<CR>
+tnoremap [window]t <C-\><C-n><C-w>T
+tnoremap [window]c <C-\><C-n>:<C-u>tabnew<CR>
+tnoremap [window]n <C-\><C-n>:<C-u>tabnext<CR>
+tnoremap [window]p <C-\><C-n>:<C-u>tabprevious<CR>
+tnoremap [window]& <C-\><C-n>:<C-u>tabclose<CR>
 
 
 "" save or quit

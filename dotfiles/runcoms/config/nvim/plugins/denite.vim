@@ -64,7 +64,6 @@ let s:denite_default_options = {
   \   'highlight-matched-char': 'None',
   \   'highlight-matched-range': 'None',
   \   'prompt': '> ',
-  \   'smartcase': v:true,
   \ }
 let s:denite_win_width_percent = 0.85
 let s:denite_win_height_percent = 0.7
@@ -76,11 +75,8 @@ call extend(s:denite_float_options, {
  \   'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
  \   'winheight': float2nr(&lines * s:denite_win_height_percent),
  \   'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+ \   'smartcase': v:true,
  \ })
-let s:denite_option_array = []
-for [key, value] in items(s:denite_default_options)
-  call add(s:denite_option_array, '-'.key.'='.value)
-endfor
 call denite#custom#option('default', s:denite_default_options)
 call denite#custom#option('float', s:denite_float_options)
 call denite#custom#option('jump', s:denite_default_options)
@@ -94,10 +90,14 @@ call denite#custom#option('_', 'statusline', v:true)
 call denite#custom#option('_', 'converters', ['converter/abbr_word'])
 call denite#custom#source('_', 'max_candidates', 100)
 call denite#custom#source('_', 'matchers', ['matcher/fuzzy'])
-call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+let s:ignore_globs = ['.git']
+call denite#custom#var('file/rec', 'command',
+    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', '']
+    \ + map(deepcopy(s:ignore_globs), { k, v -> '--ignore='.v })
+  \ )
 call denite#custom#source('file/rec', 'sorters', ['sorter/sublime'])
 call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
@@ -105,14 +105,65 @@ call denite#custom#var('grep', 'final_opts', [])
 
 
 "" Add custom commnads
-" command! -nargs=? Dgrep call s:Dgrep(<f-args>)
-" function s:Dgrep(...)
-"   if a:0 > 0
-"     execute(':Denite -buffer-name=dresume_buffer grep -path='.a:1)
-"   else
-"     execute(':Denite -buffer-name=dresume_buffer '.join(s:denite_option_array, ' ').' grep')
-"   endif
-" endfunction
+let s:denite_option_array = []
+for [key, value] in items(s:denite_default_options)
+  call add(s:denite_option_array, '-'.key.'='.value)
+endfor
+
+function s:Dgrep(...)
+  let args = {'path': '', 'option': '', 'pattern': ''}
+  let option_array = add(deepcopy(s:denite_option_array), '-buffer-name=grep')
+
+  if a:1 == 1
+    "" case sensitive
+    let args.option = '-s'
+  elseif a:1 == 0
+    "" smart case
+    let args.option = '-S'
+  endif
+
+  if a:0 > 3
+    if a:4 == 1
+      "" interactive
+      let args.pattern = '!'
+      let option_array = add(option_array, '-start-filter')
+    else
+      let args.pattern = a:4
+    endif
+  endif
+
+  if a:0 > 4
+    if a:5 == 'buf'
+      let [start_args, start_options] = denite#helper#_parse_options_args(join(option_array, ' ').' grep::'.args.option.':'.args.pattern)
+      let bufArray = []
+      bufdo let bufArray = add(bufArray, expand('%'))
+      let start_args[0].args[0] = bufArray
+      let start_options.command = 'Denite'
+      let start_options.firstline = a:2
+      let start_options.lastline = a:3
+      call denite#start(start_args, start_options)
+      return
+    else
+      let args.path = expand(a:5)
+    endif
+  endif
+  " echo    ':Denite '.join(option_array, ' ').' grep:'.args.path.':'.args.option.':'.args.pattern
+  execute(':Denite '.join(option_array, ' ').' grep:'.args.path.':'.args.option.':'.args.pattern)
+endfunction
+
+command! -nargs=* Dg   call s:Dgrep(0, <line1>, <line2>, <f-args>)
+command! -nargs=+ Dgi  call s:Dgrep(0, <line1>, <line2>, 1, <f-args>)
+command! -nargs=* Dgs  call s:Dgrep(1, <line1>, <line2>, <f-args>)
+command! -nargs=+ Dgis call s:Dgrep(1, <line1>, <line2>, 1, <f-args>)
+command! Dgr Denite -resume -buffer-name=grep
+command! Dgn Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately
+command! DgN Denite -resume -buffer-name=grep -cursor-pos=-1 -immediately
+nnoremap dgr :<C-u>Denite -resume -buffer-name=float<CR>
+if dein#check_install('vim-submode') != 0
+  nnoremap dgn :<C-u>Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately<CR>
+  nnoremap dgN :<C-u>Denite -resume -buffer-name=grep -cursor-pos=-1 -immediately<CR>
+endif
+
 " command! -nargs=? Drec call s:Drec(<f-args>)
 " function s:Drec(...)
 "   if a:0 > 0
@@ -211,14 +262,15 @@ let s:menus.my_commands.command_candidates = [
 		\ ['Split the window', 'vnew'],
 		\ ['Open zsh menu', 'Denite menu:zsh'],
 		\ ['Format code', 'FormatCode', 'go,python'],
+    \ ['Vimgrep in buffers', 'bufdo vimgrepadd {pattern} % | cwindow']
 	\ ]
 call denite#custom#var('menu', 'menus', s:menus)
 
 
 "" Add custom keymappings
 nnoremap dn :<C-u>Denite buffer -buffer-name=float<CR>
-nnoremap <C-w>w :<C-u>Denite buffer -buffer-name=float<CR>
-inoremap <C-w>w :<C-u>Denite buffer -buffer-name=float<CR>
+nnoremap [window]w :<C-u>Denite buffer -buffer-name=float<CR>
+inoremap [window]w :<C-u>Denite buffer -buffer-name=float<CR>
 nnoremap dl :<C-u>Denite file/rec -buffer-name=float<CR>
 nnoremap dL :<C-u>DeniteBufferDir file/rec -buffer-name=float<CR>
 nnoremap d<C-l> :<C-u>DeniteProjectDir file/rec -buffer-name=float<CR>
