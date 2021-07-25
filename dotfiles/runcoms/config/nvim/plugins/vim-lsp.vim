@@ -36,7 +36,7 @@ function! ToggleDiagnostics() abort
   endif
 endfunction
 
-function! s:configure_lsp() abort
+function! s:on_lsp_buffer_enabled() abort
   if !g:lsp_buffer_diagnostics_enabled
     call lsp#disable_diagnostics_for_buffer()
   endif
@@ -55,9 +55,16 @@ function! s:configure_lsp() abort
   nnoremap <buffer> gL :<C-u>call ToggleDiagnostics()<CR>
 endfunction
 
-let g:pyls_path = fnamemodify(g:python3_host_prog, ':h').'/'.'pyls'
 augroup MyLsp
   autocmd!
+  "" 有効化設定
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+
+  "" lazy loadされた場合の手動起動設定
+  autocmd FileType python call lsp#enable()
+
+  "" pythonの起動設定
+  let g:pyls_path = fnamemodify(g:python3_host_prog, ':h').'/'.'pyls'
   if executable(g:pyls_path)
     let s:pyls_config = {'pyls': {'plugins': {
         \   'jedi_definition': {
@@ -74,9 +81,8 @@ augroup MyLsp
     autocmd User lsp_setup call lsp#register_server({
         \   'name': 'pyls',
         \   'cmd': { server_info -> [g:pyls_path] },
-        \   'whitelist': ['python'],
+        \   'allowlist': ['python'],
         \   'workspace_config': s:pyls_config
         \ })
-    autocmd FileType python call s:configure_lsp()
   endif
 augroup END
