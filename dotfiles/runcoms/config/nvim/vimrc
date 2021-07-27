@@ -24,6 +24,7 @@ set gdefault
 "----------------------------
 " 表示
 "----------------------------
+set scrolloff=7
 set showcmd
 set showmatch matchtime=1
 set list listchars=tab:~\ ,trail:~
@@ -265,6 +266,7 @@ cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
 "" nop
 nnoremap <C-f> <Nop>
 nnoremap m <Nop>
+inoremap <C-x>s s
 
 "" add N
 nnoremap <C-p> <C-a>
@@ -272,7 +274,7 @@ nnoremap <C-p> <C-a>
 "" restore to the last write status
 nnoremap U :<C-u>earlier 1f<CR>
 
-"" 空行追加．コメントは継続されず，移動もしない
+"" insret new line．コメントは継続されず，移動もしない
 nnoremap gn :<C-u>call append(line('.'), '')<CR>
 nnoremap gN :<C-u>call append(line('.')-1, '')<CR>
 " ""空行追加．コメント行のあとはコメントが継続する．移動もする．
@@ -286,12 +288,22 @@ nnoremap g/ /\C
 "" delete search hilight
 nnoremap <Leader>/ :<C-u>nohlsearch<CR>
 
-"" search mark spot
+"" mark spot jump
 nnoremap ' `
 
+"" fold jump
+nnoremap [z zj
+nnoremap [Z zk
+
+"" fold operation
+nnoremap zh zc
+nnoremap zl zo
+nnoremap zk zC
+nnoremap zj zO
+nnoremap zx za
+
 "" onetime insert mode
-nnoremap q a<Space><ESC>r
-nnoremap Q i<Space><ESC>r
+nnoremap q i<Space><ESC>r
 nnoremap <C-q> q
 
 "" repeat command
@@ -311,9 +323,10 @@ vnoremap gr :<C-u>'<,'>s///g<Left><Left><Left>
 "" custom insert & command & terminal mode
 inoremap <C-l> <C-o>"_dd
 cmap <C-l> <C-u><C-k>
-inoremap <C-g> <C-o>
+inoremap <C-g>n <C-o>:<C-u>call append(line('.'), '')<CR>
+inoremap <C-g>N <C-o>:<C-u>call append(line('.'), '')<CR>
 inoremap <C-t> <Left><C-o>"zx<Left><C-r>z<Right>
-inoremap <C-r> <C-r>*
+inoremap <C-r><C-r> <C-r>*
 inoremap <C-y> <C-o>diw
 inoremap <A-f> <C-o>f
 inoremap <A-b> <C-o>F

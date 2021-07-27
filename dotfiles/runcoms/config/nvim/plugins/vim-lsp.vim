@@ -9,6 +9,7 @@ let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_enabled = 1
+let g:lsp_fold_enabled = 1
 
 "highlight
 hi LspErrorVirtualText guifg=blue
@@ -41,6 +42,10 @@ function! s:on_lsp_buffer_enabled() abort
     call lsp#disable_diagnostics_for_buffer()
   endif
   setlocal omnifunc=lsp#complete   " オムニ補完を有効化
+  setlocal
+    \ foldmethod=expr
+    \ foldexpr=lsp#ui#vim#folding#foldexpr()
+    \ foldtext=lsp#ui#vim#folding#foldtext()
   " LSP用にマッピング
   nnoremap <buffer> K :<C-u>LspHover<CR>
   nnoremap <buffer> <C-]> :<C-u>LspDefinition<CR>
@@ -53,6 +58,8 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> gR :<C-u>LspRename<CR>
   " nnoremap <buffer> <F1> :<C-u>LspImplementation<CR>
   nnoremap <buffer> gL :<C-u>call ToggleDiagnostics()<CR>
+  nnoremap <buffer> zr :<C-u>LspDocumentFold<CR>
+  nnoremap <buffer> zR :<C-u>LspDocumentFoldSync<CR>
 endfunction
 
 augroup MyLsp

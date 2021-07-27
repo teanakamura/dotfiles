@@ -276,8 +276,8 @@ nnoremap dL :<C-u>DeniteBufferDir file/rec -buffer-name=float<CR>
 nnoremap d<C-l> :<C-u>DeniteProjectDir file/rec -buffer-name=float<CR>
 nnoremap do :<C-u>Denite file_mru -buffer-name=float<CR><Down>
 nnoremap d<C-o> :<C-u>Denite file_mru -buffer-name=float -matchers=matcher/project_files,matcher/fuzzy<CR><Down>
-nnoremap dp :<C-u>Denite -buffer-name=float<CR><Down>
-nnoremap d<C-p> :<C-u>Denite -buffer-name=float -matchers=matcher/project_files,matcher/fuzzy<CR>
+nnoremap dp :<C-u>Denite file/old -buffer-name=float<CR><Down>
+nnoremap d<C-p> :<C-u>Denite file/old -buffer-name=float -matchers=matcher/project_files,matcher/fuzzy<CR>
 nnoremap dm :<C-u>Denite mark -buffer-name=mark<CR>
 nnoremap M/ :<C-u>Denite mark -buffer-name=mark<CR>
 nnoremap dr :<C-u>Denite register -buffer-name=register<CR>
