@@ -117,10 +117,10 @@ endfunction
 nnoremap [window] <Nop>
 nmap <C-w> [window]
 " nnoremap [window] <Nop>
-" nnoremap [window]h <C-w>h
-" nnoremap [window]j <C-w>j
-" nnoremap [window]k <C-w>k
-" nnoremap [window]l <C-w>l
+nnoremap [window]h <C-w>h
+nnoremap [window]j <C-w>j
+nnoremap [window]k <C-w>k
+nnoremap [window]l <C-w>l
 nnoremap [window]d :<C-u>call BufferDeleteAndMove()<CR>
 nnoremap [window]D :<C-u>bdelete<CR>
 nnoremap [window]f :<C-u>bfirst<CR>
@@ -133,9 +133,9 @@ nnoremap [window]L <C-w>>
 nnoremap [window]H <C-w><
 nnoremap [window]K <C-w>+
 nnoremap [window]J <C-w>-
-" nnoremap [window]s <C-w>s
+nnoremap [window]s <C-w>s
 nnoremap [window]_ :<C-u>split<CR>
-" nnoremap [window]v <C-w>v
+nnoremap [window]v <C-w>v
 nnoremap [window]\ :<C-u>vsplit<CR>
 nnoremap [window]x :<C-u>close<CR>
 nnoremap [window]z :<C-u>only<CR>

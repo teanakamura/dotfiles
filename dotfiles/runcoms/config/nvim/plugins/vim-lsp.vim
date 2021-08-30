@@ -42,7 +42,9 @@ function! s:on_lsp_buffer_enabled() abort
     call lsp#disable_diagnostics_for_buffer()
   endif
   setlocal omnifunc=lsp#complete   " オムニ補完を有効化
+  setlocal nofoldenable
   setlocal
+    \ foldlevel=99
     \ foldmethod=expr
     \ foldexpr=lsp#ui#vim#folding#foldexpr()
     \ foldtext=lsp#ui#vim#folding#foldtext()
@@ -72,7 +74,7 @@ augroup MyLsp
 
   "" pythonの起動設定
   let g:pyls_path = fnamemodify(g:python3_host_prog, ':h').'/'.'pyls'
-  if executable(g:pyls_path)
+  if executable(g:pyls_path) && !&diff
     let s:pyls_config = {'pyls': {'plugins': {
         \   'jedi_definition': {
         \     'enabled': v:true,

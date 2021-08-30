@@ -28,11 +28,11 @@ call submode#map('i_indent', 'i', '', '>', '<C-o>>>')
 call submode#map('i_indent', 'i', '', '<', '<C-o><<')
 
 
-"" insert new line
-call submode#enter_with('insertNewLine', 'n', '', 'gn', ':<C-u>call append(line("."), "")<CR>')
-call submode#enter_with('insertNewLine', 'n', '', 'gN', ':<C-u>call append(line(".")-1, "")<CR>')
-call submode#map('insertNewLine', 'n', '', 'n', ':<C-u>call append(line("."), "")<CR>')
-call submode#map('insertNewLine', 'n', '', 'N', ':<C-u>call append(line(".")-1, "")<CR>')
+" "" insert new line
+" call submode#enter_with('insertNewLine', 'n', '', 'gn', ':<C-u>call append(line("."), "")<CR>')
+" call submode#enter_with('insertNewLine', 'n', '', 'gN', ':<C-u>call append(line(".")-1, "")<CR>')
+" call submode#map('insertNewLine', 'n', '', 'n', ':<C-u>call append(line("."), "")<CR>')
+" call submode#map('insertNewLine', 'n', '', 'N', ':<C-u>call append(line(".")-1, "")<CR>')
 
 
 "" move screen line

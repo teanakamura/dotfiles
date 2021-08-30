@@ -151,13 +151,13 @@ function s:Dgrep(...)
   execute(':Denite '.join(option_array, ' ').' grep:'.args.path.':'.args.option.':'.args.pattern)
 endfunction
 
-command! -nargs=* Dg   call s:Dgrep(0, <line1>, <line2>, <f-args>)
-command! -nargs=+ Dgi  call s:Dgrep(0, <line1>, <line2>, 1, <f-args>)
-command! -nargs=* Dgs  call s:Dgrep(1, <line1>, <line2>, <f-args>)
-command! -nargs=+ Dgis call s:Dgrep(1, <line1>, <line2>, 1, <f-args>)
-command! Dgr Denite -resume -buffer-name=grep
-command! Dgn Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately
-command! DgN Denite -resume -buffer-name=grep -cursor-pos=-1 -immediately
+command! -nargs=* DG   call s:Dgrep(0, <line1>, <line2>, <f-args>)
+command! -nargs=+ DGI  call s:Dgrep(0, <line1>, <line2>, 1, <f-args>)
+command! -nargs=* DGS  call s:Dgrep(1, <line1>, <line2>, <f-args>)
+command! -nargs=+ DGIS call s:Dgrep(1, <line1>, <line2>, 1, <f-args>)
+command! DGR Denite -resume -buffer-name=grep
+command! DGn Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately
+command! DGN Denite -resume -buffer-name=grep -cursor-pos=-1 -immediately
 nnoremap dgr :<C-u>Denite -resume -buffer-name=float<CR>
 if dein#check_install('vim-submode') != 0
   nnoremap dgn :<C-u>Denite -resume -buffer-name=grep -cursor-pos=+1 -immediately<CR>
@@ -220,11 +220,11 @@ function s:denite_menu(...)
     execute(':Denite '.join(s:denite_option_array, ' ').' menu -buffer-name=float')
   endif
 endfunction
-command! Dm execute('Denite menu -buffer-name=float')
-command! Dmv execute('Denite menu:vim -buffer-name=float')
-command! Dmz execute('Denite menu:zsh -buffer-name=float')
-command! Dmf execute('Denite menu:others:.fasd -buffer-name=float')
-command! Dmc execute('Denite menu:my_commands -buffer-name=float')
+command! DM execute('Denite menu -buffer-name=float')
+command! DMV execute('Denite menu:vim -buffer-name=float')
+command! DMZ execute('Denite menu:zsh -buffer-name=float')
+command! DMF execute('Denite menu:others:.fasd -buffer-name=float')
+command! DMC execute('Denite menu:my_commands -buffer-name=float')
 
 
 "" Add custom menus
