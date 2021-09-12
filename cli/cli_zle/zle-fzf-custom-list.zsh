@@ -1,4 +1,4 @@
-fzf-custom-list-search() {
+zle-fzf-custom-list() {
   local arr=($(cat ~/.custom_list))
   local res=$(printf "%s\n" "${arr[@]}" | sort -rn | fzf)
   if [ -n "$res" ]; then
@@ -8,5 +8,4 @@ fzf-custom-list-search() {
   fi
 }
 
-zle -N fzf-custom-list-search
-bindkey '^y' fzf-custom-list-search
+zle -N zle-fzf-custom-list

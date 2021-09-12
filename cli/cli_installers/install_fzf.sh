@@ -34,11 +34,15 @@ if type fzf >/dev/null 2>&1; then
   {
     cat <<- EOS
 ## fzf utils
-source ~/dotfiles/cli/cli_zle/fzf-custom-list-search.sh
 source ~/dotfiles/cli/cli_func/jump-fzf-under
 alias ju='jump-fzf-under'
 alias cla='fzf-custom-list-add'
 alias clr='fzf-custom-list-remove'
+
+## fzf zle
+source ~/dotfiles/cli/cli_zle/zle-fzf-custom-list.zsh
+bindkey '^X^Y' zle-fzf-custom-list
+bindkey '^J' fzf-file-widget
 
 EOS
   } >> ~/.config/shell/rc.local

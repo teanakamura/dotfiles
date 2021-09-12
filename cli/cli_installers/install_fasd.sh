@@ -16,13 +16,13 @@ if type fasd >/dev/null 2>&1; then
 eval "$(fasd --init zsh-hook)"
 
 ## fasd utils
-alias a='fasd -a'  ## any
+# alias a='fasd -a'  ## any
 # alias s='fasd -si'  ## show / search / select
-alias d='fasd -d'  ## directory
-alias f='fasd -f'  ## file
-alias vf='fasd -f -e nvim'
+# alias d='fasd -d'  ## directory
+# alias f='fasd -f'  ## file
 # alias sd='fasd -sid'  ## interactive directory selection
 # alias sf='fasd -sif'  ## interactive file selection
+alias vf='fasd -f -e nvim'
 source ~/dotfiles/cli/cli_func/fasd_cd.sh
 alias j='fasd_cd -d'  ## cd, same functionality as j in autojump
 source ~/dotfiles/cli/cli_func/jump-fasd-file-search.sh
@@ -43,6 +43,12 @@ source ~/dotfiles/cli/cli_func/jump-fzf-fasd-directory-search.sh
 alias jd='jump-fzf-fasd-directory-search'
 source ~/dotfiles/cli/cli_func/jump-fzf-fasd-file-search.sh
 alias jf='jump-fzf-fasd-file-search'
+
+## fasd + fzf zle
+source ~/dotfiles/cli/cli_zle/zle-fzf-fasd-file.zsh
+bindkey '^O' zle-fzf-fasd-file
+source ~/dotfiles/cli/cli_zle/zle-fzf-fasd-dir.zsh
+bindkey '^T' zle-fzf-fasd-dir
 
 EOS
   } >> ~/.config/shell/rc.local
