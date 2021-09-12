@@ -234,6 +234,11 @@ vnoremap g<C-k> <C-y>k
 onoremap g<C-k> <C-y>k
 
 
+"" indent
+vnoremap > >gv
+vnoremap < <gv
+
+
 "" emacs like key mappings
 nnoremap <C-a> ^
 inoremap <C-a> <C-o>^
