@@ -19,7 +19,7 @@ set hlsearch
 set incsearch
 set ignorecase smartcase
 set wrapscan
-set gdefault
+"set gdefault
 
 "----------------------------
 " 表示

@@ -223,9 +223,8 @@ endfunction
 command! DM execute('Denite menu -buffer-name=float')
 command! DMV execute('Denite menu:vim -buffer-name=float')
 command! DMZ execute('Denite menu:zsh -buffer-name=float')
-command! DMF execute('Denite menu:others:.fasd -buffer-name=float')
+command! DMO execute('Denite menu:others -buffer-name=float')
 command! DMC execute('Denite menu:my_commands -buffer-name=float')
-
 
 "" Add custom menus
 let s:menus = {}
@@ -256,14 +255,16 @@ let s:menus.vim.file_candidates = [
 let s:menus.others = {'description': 'Others'}
 let s:menus.others.file_candidates = [
     \ ['.fasd', '~/.fasd'],
+    \ ['.custom_list', '~/.custom_list'],
   \ ]
 let s:menus.my_commands = {'description': 'Example commands'}
 let s:menus.my_commands.command_candidates = [
-		\ ['Split the window', 'vnew'],
-		\ ['Open zsh menu', 'Denite menu:zsh'],
-		\ ['Format code', 'FormatCode', 'go,python'],
-    \ ['Vimgrep in buffers', 'bufdo vimgrepadd {pattern} % | cwindow']
-	\ ]
+    \ ['IPython embed', 'read! echo "from IPython import embed; embed()"', 'python'],
+    \ ['Split the window', 'vnew'],
+    \ ['Open zsh menu', 'Denite menu:zsh'],
+    \ ['Format code', 'FormatCode', 'go,python'],
+    \ ['Vimgrep in buffers', 'bufdo vimgrepadd {pattern} % | cwindow'],
+  \ ]
 call denite#custom#var('menu', 'menus', s:menus)
 
 

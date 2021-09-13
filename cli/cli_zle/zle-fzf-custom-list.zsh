@@ -1,8 +1,12 @@
+#!/bin/zsh
+
 zle-fzf-custom-list() {
-  local arr=($(cat ~/.custom_list))
-  local res=$(printf "%s\n" "${arr[@]}" | sort -rn | fzf)
+  local f=~/.custom_list
+  local lines=("${(@f)$(egrep "$2" "$f")}")
+  local res=$(printf "%s\n" "${lines[@]}" | sort -rn | fzf)
   if [ -n "$res" ]; then
     BUFFER+="$res"
+    CURSOR=${#BUFFER}
   else
     return 1
   fi

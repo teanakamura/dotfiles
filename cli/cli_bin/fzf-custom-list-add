@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/bin/zsh
 
-cl=~/.custom_list
-arr=($(cat $cl))
-arr+=($1)
-printf "%s\n" ${arr[@]} | sort -u >| $cl
+local f=~/.custom_list
+local lines=("${(@f)$(egrep "$2" "$f")}")
+local e=("${"${@}"}")
+lines+=("$e")
+: > $f
+printf "%s\n" ${lines[@]} | sort -u >> $f

@@ -1,12 +1,13 @@
-#!/bin/bash
+#!/bin/zsh
 
-cl=~/.custom_list
-arr=($(cat $cl))
-upd_arr=()
-for v in "${arr[@]}"; do
-  if [[ $1 != $v ]]; then
-    upd_arr+=($v)
+local f=~/.custom_list
+local lines=("${(@f)$(egrep "$2" "$f")}")
+local e=("${"${@}"}")
+local upd_lines=()
+for v in "${lines[@]}"; do
+  if [[ $e != $v ]]; then
+    upd_lines+=($v)
   fi
 done
-printf "%s\n" ${upd_arr[@]} | sort -u >| $cl
-
+: > $f
+printf "%s\n" ${upd_lines[@]} | sort -u >> $f
