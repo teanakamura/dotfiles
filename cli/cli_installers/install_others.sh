@@ -7,19 +7,16 @@ ln -s ~/dotfiles/cli/cli_bin/parse_yaml ~/.local/bin
 ## custom function
 source ~/dotfiles/cli/cli_func/check_exec_shell.sh
 
-## custom alias
-alias d='dirs -v'
-
 ## custom zle
-#bindkey '^f' vi-find-next-char
-#bindkey '^b' vi-find-prev-char
-#bindkey '^s' vi-find-next-char
 bindkey '^u' backward-kill-line
+# bindkey '^s' xxx
+# bindkey '^y' xxx
 bindkey '^[f' vi-find-next-char
-bindkey '^[b' vi-find-prev-char
-bindkey '^S' vi-find-next-char
-bindkey '^X^X' vi-find-prev-char
-bindkey '^Y' vi-repeat-find
+bindkey '^[F' vi-find-prev-char
+bindkey '^[n' vi-repeat-find
+bindkey '^[N' vi-rev-repeat-find
+bindkey '^[h' emacs-forward-word
+bindkey '^[l' emacs-backward-word
 
 EOS
 } >> ~/.config/shell/rc.local

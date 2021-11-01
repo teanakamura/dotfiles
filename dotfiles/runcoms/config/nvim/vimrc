@@ -79,6 +79,13 @@ tnoremap <ESC> <C-\><C-n>
 cnoremap <C-s> <ESC>
 
 
+"" move
+nnoremap <Down> 2j
+vnoremap <Down> 2j
+nnoremap <Up> 2k
+vnoremap <Up> 2k
+
+
 "" cut & not save
 vnoremap d "_d
 nnoremap d "_d
@@ -292,6 +299,8 @@ nnoremap \ /\<\><Left><Left>
 nnoremap g/ /\C
 "" delete search hilight
 nnoremap <Leader>/ :<C-u>nohlsearch<CR>
+"" hilight same words
+nnoremap <silent> <Leader>* "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 
 "" mark spot jump
 nnoremap ' `
