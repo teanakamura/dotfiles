@@ -54,6 +54,8 @@ set termguicolors
 colorscheme molokai
 hi CursorLine guifg=NONE
 hi Comment ctermfg=3
+hi Search gui=reverse guifg=MediumTurquoise guibg=Grey15
+hi IncSearch gui=reverse guifg=IndianRed1 guibg=Grey15
 set pumblend=10
 let g:active_bg = 'guibg=NONE'
 let g:inactive_bg = 'guibg=#202620'
@@ -68,9 +70,9 @@ let mapleader = "\<Space>"
 
 
 "" escape
-nnoremap <C-s> <ESC>
-inoremap <C-s> <ESC>
-vnoremap <C-s> <ESC>
+nnoremap <silent> <C-s> <ESC>:<C-u>nohlsearch<CR>
+inoremap <silent> <C-s> <ESC>:<C-u>nohlsearch<CR>
+vnoremap <silent> <C-s> <ESC>:<C-u>nohlsearch<CR>
 xnoremap <C-s> <ESC>
 onoremap <C-s> <ESC>
 tnoremap <C-s> <C-\><C-n>
@@ -301,6 +303,30 @@ nnoremap g/ /\C
 nnoremap <Leader>/ :<C-u>nohlsearch<CR>
 "" hilight same words
 nnoremap <silent> <Leader>* "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+"" 2 chars search
+function S_jump(num_char, dir)
+  nohlsearch
+  let l:str = ""
+  while len(l:str) < a:num_char
+    let l:str = l:str . nr2char(getchar())
+  endwhile
+  let l:str = l:str . '\C'
+  echo l:str
+  if a:dir == 1
+    let @/ = l:str
+    call search(l:str, "z")
+  elseif a:dir == 0
+    let @/ = l:str
+    call search(l:str, "bz")
+  endif
+endfunction
+nnoremap <silent> s :<C-u>call S_jump(2, 1)<CR>
+vnoremap <silent> s :<C-u>call S_jump(2, 1)<CR>
+onoremap <silent> s :<C-u>call S_jump(2, 1)<CR>
+nnoremap <silent> S :<C-u>call S_jump(2, 0)<CR>
+vnoremap <silent> S :<C-u>call S_jump(2, 0)<CR>
+onoremap <silent> S :<C-u>call S_jump(2, 0)<CR>
+
 
 "" mark spot jump
 nnoremap ' `
@@ -343,7 +369,7 @@ inoremap <C-t> <Left><C-o>"zx<Left><C-r>z<Right>
 inoremap <C-r><C-r> <C-r>*
 inoremap <C-y> <C-o>diw
 inoremap <A-f> <C-o>f
-inoremap <A-b> <C-o>F
+inoremap <A-S-f> <C-o>F
 inoremap <C-]> <C-o>;
 inoremap <C-x>. <C-a>
 " cnoremap <C-x> <C-d>

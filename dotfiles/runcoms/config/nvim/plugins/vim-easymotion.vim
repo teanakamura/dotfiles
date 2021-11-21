@@ -1,15 +1,15 @@
 "" default : <Leader><Leader>w <Plug>(easymotion-w) -> j w
 
 
-"" s{char}             : map {char}s for jump
-"" S{char}{char}       : map {char}{char} for jump
-"" <Leader>S{char}*<CR>: map {char}* for jump
-nmap s <Plug>(easymotion-overwin-f)
-vmap s <Plug>(easymotion-bd-f)
-nmap S <Plug>(easymotion-overwin-f2)
-vmap S <Plug>(easymotion-bd-f2)
-nmap <Leader>s <Plug>(easymotion-sn)
-vmap <Leader>s <Plug>(easymotion-sn)
+" "" s{char}             : map {char}s for jump
+" "" S{char}{char}       : map {char}{char} for jump
+" "" <Leader>S{char}*<CR>: map {char}* for jump
+" nmap s <Plug>(easymotion-overwin-f)
+" vmap s <Plug>(easymotion-bd-f)
+" nmap S <Plug>(easymotion-overwin-f2)
+" vmap S <Plug>(easymotion-bd-f2)
+" nmap <Leader>s <Plug>(easymotion-sn)
+" vmap <Leader>s <Plug>(easymotion-sn)
 
 
 "" <Leader>L: map line for jump
@@ -43,24 +43,6 @@ function F_jump(num_char, dir)
     exec "normal \<Plug>(easymotion-F2)".nr2char(getchar()).nr2char(getchar())."a"
   endif
 endfunction
-" nmap f :<C-u>exec "normal \<Plug>(easymotion-f)".nr2char(getchar())."a"<CR>
-" nmap F :<C-u>exec "normal \<Plug>(easymotion-F)".nr2char(getchar())."a"<CR>
-" nmap <Leader>f :exec "normal \<Plug>(easymotion-f2)".nr2char(getchar()).nr2char(getchar())."a"<CR>
-" nmap <Leader>F :exec "normal \<Plug>(easymotion-F2)".nr2char(getchar()).nr2char(getchar())."a"<CR>
-" nmap ; <Plug>(easymotion-next)
-" nmap , <Plug>(easymotion-prev)
-nnoremap <silent> f :<C-u>call F_jump(1, 1)<CR>
-onoremap <silent> f :<C-u>call F_jump(1, 1)<CR>
-inoremap <silent> <A-f> <C-o>:<C-u>call F_jump(1, 1)<CR>
-nnoremap <silent> F :<C-u>call F_jump(1, 0)<CR>
-onoremap <silent> F :<C-u>call F_jump(1, 0)<CR>
-inoremap <silent> <A-b> <C-o>:<C-u>call F_jump(1, 0)<CR>
-nnoremap <silent> <Leader>f :<C-u>call F_jump(2, 1)<CR>
-onoremap <silent> <Leader>f :<C-u>call F_jump(2, 1)<CR>
-nnoremap <silent> <Leader>F :<C-u>call F_jump(2, 0)<CR>
-onoremap <silent> <Leader>F :<C-u>call F_jump(2, 0)<CR>
-nnoremap <silent> ; :<C-u>call Jump_like_as_prev_jump(1)<CR>
-nnoremap <silent> , :<C-u>call Jump_like_as_prev_jump(0)<CR>
 
 "" disable <Plug>(easymotion-next), <Plug>(easymotion-prev) highlight
 let g:EasyMotion_move_highlight = 0
@@ -75,3 +57,21 @@ if dein#check_install('vim-submode') != 0
   inoremap <C-]> <C-o>:<C-u>call Jump_like_as_prev_jump(1)<CR>
 endif
 
+" nmap f :<C-u>exec "normal \<Plug>(easymotion-f)".nr2char(getchar())."a"<CR>
+" nmap F :<C-u>exec "normal \<Plug>(easymotion-F)".nr2char(getchar())."a"<CR>
+" nmap <Leader>f :exec "normal \<Plug>(easymotion-f2)".nr2char(getchar()).nr2char(getchar())."a"<CR>
+" nmap <Leader>F :exec "normal \<Plug>(easymotion-F2)".nr2char(getchar()).nr2char(getchar())."a"<CR>
+" nmap ; <Plug>(easymotion-next)
+" nmap , <Plug>(easymotion-prev)
+" nnoremap <silent> f :<C-u>call F_jump(1, 1)<CR>
+" onoremap <silent> f :<C-u>call F_jump(1, 1)<CR>
+" inoremap <silent> <A-f> <C-o>:<C-u>call F_jump(1, 1)<CR>
+" nnoremap <silent> F :<C-u>call F_jump(1, 0)<CR>
+" onoremap <silent> F :<C-u>call F_jump(1, 0)<CR>
+" inoremap <silent> <A-b> <C-o>:<C-u>call F_jump(1, 0)<CR>
+" nnoremap <silent> <Leader>f :<C-u>call F_jump(2, 1)<CR>
+" onoremap <silent> <Leader>f :<C-u>call F_jump(2, 1)<CR>
+" nnoremap <silent> <Leader>F :<C-u>call F_jump(2, 0)<CR>
+" onoremap <silent> <Leader>F :<C-u>call F_jump(2, 0)<CR>
+" nnoremap <silent> ; :<C-u>call Jump_like_as_prev_jump(1)<CR>
+" nnoremap <silent> , :<C-u>call Jump_like_as_prev_jump(0)<CR>
