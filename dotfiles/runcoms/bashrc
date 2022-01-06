@@ -1,2 +1,8 @@
+## If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+## use zsh
+exec /usr/bin/zsh
+
 source ~/.config/shell/alias
 [ -f ~/.config/shell/rc.local ] && source ~/.config/shell/rc.local

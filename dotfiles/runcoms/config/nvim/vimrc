@@ -2,7 +2,7 @@ set hidden
 set autoread
 set nobackup
 set mouse=a
-set swapfile
+set noswapfile
 set splitright
 set splitbelow
 set clipboard+=unnamed
@@ -297,10 +297,18 @@ nnoremap gN :<C-u>call append(line('.')-1, '')<CR>
 
 "" strict search
 nnoremap \ /\<\><Left><Left>
+"" non-moving search under cursor
+nnoremap * *N
+nnoremap # #N
 "" case sensitive search
 nnoremap g/ /\C
 "" delete search hilight
-nnoremap <Leader>/ :<C-u>nohlsearch<CR>
+nnoremap <Leader><Leader>/ :<C-u>nohlsearch<CR>
+"" search in screen range
+nnoremap <Leader>/ m'HVL<ESC><C-o>/\%V
+nnoremap <Leader>? m'HVL<ESC><C-o>?\%V
+" nnoremap <Leader>* m'HVL<ESC><C-o>:<C-u>execute '/\%V' . escape(expand('<cword>'), '\/') . '\%V/'<CR>
+" nnoremap <Leader># m'HVL<ESC><C-o>:<C-u>execute '?\%V' . escape(expand('<cword>'), '\/') . '\%V/'<CR>
 "" hilight same words
 nnoremap <silent> <Leader>* "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 "" 2 chars search
@@ -314,10 +322,12 @@ function S_jump(num_char, dir)
   echo l:str
   if a:dir == 1
     let @/ = l:str
-    call search(l:str, "z")
+    " call search(l:str, "z")
+    execute 'normal /' . l:str . '/'
   elseif a:dir == 0
     let @/ = l:str
-    call search(l:str, "bz")
+    " call search(l:str, "bz")
+    execute 'normal ?' . l:str . '?'
   endif
 endfunction
 nnoremap <silent> s :<C-u>call S_jump(2, 1)<CR>

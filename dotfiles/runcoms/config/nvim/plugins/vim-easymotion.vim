@@ -4,10 +4,10 @@
 " "" s{char}             : map {char}s for jump
 " "" S{char}{char}       : map {char}{char} for jump
 " "" <Leader>S{char}*<CR>: map {char}* for jump
-" nmap s <Plug>(easymotion-overwin-f)
-" vmap s <Plug>(easymotion-bd-f)
-" nmap S <Plug>(easymotion-overwin-f2)
-" vmap S <Plug>(easymotion-bd-f2)
+" nmap <Leader>s <Plug>(easymotion-overwin-f)
+" vmap <Leader>s <Plug>(easymotion-bd-f)
+" nmap <Leader>S <Plug>(easymotion-overwin-f2)
+" vmap <Leader>S <Plug>(easymotion-bd-f2)
 " nmap <Leader>s <Plug>(easymotion-sn)
 " vmap <Leader>s <Plug>(easymotion-sn)
 

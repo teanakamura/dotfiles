@@ -9,7 +9,7 @@ let g:lsp_signs_warning = {'text': '‼'}
 let g:lsp_signs_information = {'text': 'i'}
 let g:lsp_signs_hint = {'text': '?'}
 let g:lsp_virtual_text_enabled = 1
-let g:lsp_fold_enabled = 1
+let g:lsp_fold_enabled = 0
 
 "highlight
 hi LspErrorVirtualText guifg=blue
@@ -19,8 +19,9 @@ hi LspHintVirtualText guifg=blue
 
 
 " dubug
-let g:lsp_log_verbose = 0  " デバッグ用ログを出力
-let g:lsp_log_file = expand('~/.cache/vim-lsp/vim-lsp.log')  " ログ出力のPATHを設定
+" let g:lsp_log_verbose = 0  " デバッグ用ログを出力
+" let g:lsp_log_file = expand('~/.cache/vim-lsp/vim-lsp.log')  " ログ出力のPATHを設定
+let g:lsp_log_file = expand('')  " ログ出力のPATHを設定
 
 " configurations of each language server
 let g:lsp_buffer_diagnostics_enabled = 0  " custom variable

@@ -3,7 +3,7 @@
   # email =
 
 [core]
-	editor = nvim
+  editor = nvim
 
 [include]
   path = ~/.config/git/gitconfig.local
@@ -16,3 +16,12 @@
 
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd l\""
+
+[merge]
+  tool = nvimdiff
+
+[mergetool "nvimdiff"]
+  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\""
+
+[push]
+	default = simple
