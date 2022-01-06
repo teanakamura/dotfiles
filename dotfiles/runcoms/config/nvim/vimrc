@@ -298,19 +298,16 @@ nnoremap gN :<C-u>call append(line('.')-1, '')<CR>
 "" strict search
 nnoremap \ /\<\><Left><Left>
 "" non-moving search under cursor
-nnoremap * *N
-nnoremap # #N
+nnoremap <silent> * "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 "" case sensitive search
 nnoremap g/ /\C
 "" delete search hilight
 nnoremap <Leader><Leader>/ :<C-u>nohlsearch<CR>
 "" search in screen range
-nnoremap <Leader>/ m'HVL<ESC><C-o>/\%V
-nnoremap <Leader>? m'HVL<ESC><C-o>?\%V
-" nnoremap <Leader>* m'HVL<ESC><C-o>:<C-u>execute '/\%V' . escape(expand('<cword>'), '\/') . '\%V/'<CR>
-" nnoremap <Leader># m'HVL<ESC><C-o>:<C-u>execute '?\%V' . escape(expand('<cword>'), '\/') . '\%V/'<CR>
-"" hilight same words
-nnoremap <silent> <Leader>* "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <Leader>/ m'HVL<ESC>2<C-o>/\%V
+nnoremap <Leader>? m'HVL<ESC>2<C-o>?\%V
+nnoremap <Leader>* m'HVL<ESC>2<C-o>:<C-u>execute '/\%V' . expand('<cword>')<CR>
+nnoremap <Leader># m'HVL<ESC>2<C-o>:<C-u>execute '?\%V' . expand('<cword>')<CR>
 "" 2 chars search
 function S_jump(num_char, dir)
   nohlsearch
