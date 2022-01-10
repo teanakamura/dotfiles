@@ -1,5 +1,5 @@
 let g:SignatureMap = {
-        \ 'Leader'             :  "d@",
+        \ 'Leader'             :  "m",
         \ 'PlaceNextMark'      :  "",
         \ 'ToggleMarkAtLine'   :  "M",
         \ 'PurgeMarksAtLine'   :  "",
@@ -8,12 +8,12 @@ let g:SignatureMap = {
         \ 'PurgeMarkers'       :  "",
         \ 'GotoNextLineAlpha'  :  "",
         \ 'GotoPrevLineAlpha'  :  "",
-        \ 'GotoNextSpotAlpha'  :  "]m",
-        \ 'GotoPrevSpotAlpha'  :  "]M",
+        \ 'GotoNextSpotAlpha'  :  "]s",
+        \ 'GotoPrevSpotAlpha'  :  "]S",
         \ 'GotoNextLineByPos'  :  "",
         \ 'GotoPrevLineByPos'  :  "",
-        \ 'GotoNextSpotByPos'  :  "[m",
-        \ 'GotoPrevSpotByPos'  :  "[M",
+        \ 'GotoNextSpotByPos'  :  "[s",
+        \ 'GotoPrevSpotByPos'  :  "[S",
         \ 'GotoNextMarker'     :  "",
         \ 'GotoPrevMarker'     :  "",
         \ 'GotoNextMarkerAny'  :  "",
@@ -27,6 +27,6 @@ if dein#check_install('vim-submode') == 0
 endif
 
 let g:SignatureMorkTextHLDynamic = 1
-nnoremap M, :<C-u>wshada!<CR>
+" nnoremap M, :<C-u>wshada!<CR>
 
 nnoremap dM :<C-u>call signature#mark#Purge("all")<CR>:<C-u>wshada!<CR>,

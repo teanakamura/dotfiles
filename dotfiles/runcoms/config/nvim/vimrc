@@ -279,7 +279,7 @@ cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
 "" custom normal, visual, operation pending
 "" nop
 nnoremap <C-f> <Nop>
-nnoremap m <Nop>
+" nnoremap m <Nop>
 inoremap <C-x>s s
 
 "" add N

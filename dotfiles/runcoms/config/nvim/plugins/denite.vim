@@ -280,7 +280,7 @@ nnoremap d<C-o> :<C-u>Denite file_mru -buffer-name=float -matchers=matcher/proje
 nnoremap dp :<C-u>Denite file/old -buffer-name=float<CR><Down>
 nnoremap d<C-p> :<C-u>Denite file/old -buffer-name=float -matchers=matcher/project_files,matcher/fuzzy<CR>
 nnoremap dm :<C-u>Denite mark -buffer-name=mark<CR>
-nnoremap M/ :<C-u>Denite mark -buffer-name=mark<CR>
+" nnoremap M/ :<C-u>Denite mark -buffer-name=mark<CR>
 nnoremap dr :<C-u>Denite register -buffer-name=register<CR>
 nnoremap dj :<C-u>Denite jump -buffer-name=jump<CR>
 "nnoremap dl :<C-u>Denite line/external<CR>

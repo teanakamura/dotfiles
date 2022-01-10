@@ -76,11 +76,11 @@ call submode#map('sectionJump', 'n', '', 'z', 'zjz.')
 call submode#map('sectionJump', 'n', '', 'Z', 'zkz.')
 
 
-"" mark jump (require vim-signature)
-call submode#enter_with('markJump', 'n', '', '[m', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>')
-call submode#enter_with('markJump', 'n', '', '[M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>')
-call submode#map('markJump', 'n', '', 'm', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>z.')
-call submode#map('markJump', 'n', '', 'M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>z.')
+" "" mark jump (require vim-signature)
+" call submode#enter_with('markJump', 'n', '', '[m', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>')
+" call submode#enter_with('markJump', 'n', '', '[M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>')
+" call submode#map('markJump', 'n', '', 'm', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>z.')
+" call submode#map('markJump', 'n', '', 'M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>z.')
 
 
 "" git hunk jump (require vim-gitgutter)
