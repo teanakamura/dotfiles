@@ -11,9 +11,9 @@ for f in ?*
 do
   [[ "$f" == "git" ]] && continue
   [[ "$f" == ".DS_Store" ]] && continue
-  
+
   echo ".$f"
-  
+
   if [[ "$f" == "cache" ]] || [[ "$f" == "config" ]]
   then
     cd $f
@@ -25,7 +25,7 @@ do
     done
     cd ../
     continue
-  fi 
+  fi
 
   ln -snfv "$DOT_DIR/$f" "$HOME/.$f" 
 done
