@@ -295,6 +295,8 @@ nnoremap gN :<C-u>call append(line('.')-1, '')<CR>
 " nnoremap gn :o<ESC>
 " nnoremap gN :O<ESC>
 
+"" visual search
+vnoremap * y/<C-R>"<CR>
 "" strict search
 nnoremap \ /\<\><Left><Left>
 "" non-moving search under cursor
@@ -309,7 +311,7 @@ nnoremap <Leader>? m'HVL<ESC>2<C-o>?\%V
 nnoremap <Leader>* m'HVL<ESC>2<C-o>:<C-u>execute '/\%V' . expand('<cword>')<CR>
 nnoremap <Leader># m'HVL<ESC>2<C-o>:<C-u>execute '?\%V' . expand('<cword>')<CR>
 "" 2 chars search
-function S_jump(num_char, dir)
+function S_jump(num_char, dir, visual)
   nohlsearch
   let l:str = ""
   while len(l:str) < a:num_char
@@ -326,13 +328,16 @@ function S_jump(num_char, dir)
     " call search(l:str, "bz")
     execute 'normal ?' . l:str . '?'
   endif
+  if a:visual == 1
+    execute 'normal gvn'
+  endif
 endfunction
-nnoremap <silent> s :<C-u>call S_jump(2, 1)<CR>
-vnoremap <silent> s :<C-u>call S_jump(2, 1)<CR>
-onoremap <silent> s :<C-u>call S_jump(2, 1)<CR>
-nnoremap <silent> S :<C-u>call S_jump(2, 0)<CR>
-vnoremap <silent> S :<C-u>call S_jump(2, 0)<CR>
-onoremap <silent> S :<C-u>call S_jump(2, 0)<CR>
+nnoremap <silent> s :<C-u>call S_jump(2, 1, 0)<CR>
+vnoremap <silent> s :<C-u>call S_jump(2, 1, 1)<CR>
+onoremap <silent> s :<C-u>call S_jump(2, 1, 0)<CR>
+nnoremap <silent> S :<C-u>call S_jump(2, 0, 0)<CR>
+vnoremap <silent> S :<C-u>call S_jump(2, 0, 1)<CR>
+onoremap <silent> S :<C-u>call S_jump(2, 0, 0)<CR>
 
 
 "" mark spot jump
