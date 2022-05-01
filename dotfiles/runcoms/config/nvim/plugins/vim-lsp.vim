@@ -44,11 +44,11 @@ function! s:on_lsp_buffer_enabled() abort
   endif
   setlocal omnifunc=lsp#complete   " オムニ補完を有効化
   setlocal nofoldenable
-  setlocal
-    \ foldlevel=99
-    \ foldmethod=expr
-    \ foldexpr=lsp#ui#vim#folding#foldexpr()
-    \ foldtext=lsp#ui#vim#folding#foldtext()
+  " setlocal
+  "  \ foldlevel=99
+  "  \ foldmethod=expr
+  "  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  "  \ foldtext=lsp#ui#vim#folding#foldtext()
   " LSP用にマッピング
   nnoremap <buffer> K :<C-u>LspHover<CR>
   nnoremap <buffer> <C-]> :<C-u>LspDefinition<CR>

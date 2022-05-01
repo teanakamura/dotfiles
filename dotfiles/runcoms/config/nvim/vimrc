@@ -24,13 +24,13 @@ set wrapscan
 "----------------------------
 " 表示
 "----------------------------
-set scrolloff=7
+set scrolloff=6
 set showcmd
 set showmatch matchtime=1
 set list listchars=tab:~\ ,trail:~
 set laststatus=2
 set number
-set foldmethod=marker
+set foldmethod=manual
 set virtualedit=onemore
 set whichwrap+=h,l
 set cursorline
@@ -82,10 +82,10 @@ cnoremap <C-s> <ESC>
 
 
 "" move
-nnoremap <Down> 2j
-vnoremap <Down> 2j
-nnoremap <Up> 2k
-vnoremap <Up> 2k
+nnoremap <Down> 3j
+vnoremap <Down> 3j
+nnoremap <Up> 3k
+vnoremap <Up> 3k
 
 
 "" cut & not save
@@ -110,11 +110,15 @@ nnoremap tt dd
 vnoremap t d
 nnoremap T dd
 vnoremap T d
+" "" cut & save
+" nnoremap <C-t> "0ddk"0P
 "" yank
 vnoremap y "+y
 nnoremap Y "+yy
 "" yank & move
 vnoremap gy "+ygv`><ESC>
+" "" yank & paste
+" nnoremap <C-y> "0yy"0P
 
 
 "" window, tab, buffer operation(normal)
@@ -229,21 +233,43 @@ nnoremap ZA :<C-u>quitall!<CR>
 
 
 "" scroll
-nnoremap <C-j> <C-e>
-vnoremap <C-j> <C-e>
-onoremap <C-j> <C-e>
-nnoremap <C-k> <C-y>
-vnoremap <C-k> <C-y>
-onoremap <C-k> <C-y>
-nnoremap g<C-j> <C-e>j
-vnoremap g<C-j> <C-e>j
-onoremap g<C-j> <C-e>j
-nnoremap g<C-k> <C-y>k
-vnoremap g<C-k> <C-y>k
-onoremap g<C-k> <C-y>k
+nnoremap <C-y> <Nop>
+vnoremap <C-y> <Nop>
+onoremap <C-y> <Nop>
+nnoremap <C-f> <Nop>
+vnoremap <C-f> <Nop>
+onoremap <C-f> <Nop>
+nnoremap g<C-j> <C-e>
+vnoremap g<C-j> <C-e>
+onoremap g<C-j> <C-e>
+nnoremap g<C-k> <C-y>
+vnoremap g<C-k> <C-y>
+onoremap g<C-k> <C-y>
+nnoremap <Leader><C-j> <C-e>j
+vnoremap <Leader><C-j> <C-e>j
+onoremap <Leader><C-j> <C-e>j
+nnoremap <Leader><C-k> <C-y>k
+vnoremap <Leader><C-k> <C-y>k
+onoremap <Leader><C-k> <C-y>k
+nnoremap zt <Nop>
+vnoremap zt <Nop>
+onoremap zt <Nop>
+nnoremap zb <Nop>
+vnoremap zb <Nop>
+onoremap zb <Nop>
+nnoremap z, zt
+vnoremap z, zt
+onoremap z, zt
+nnoremap z/ zb
+vnoremap z/ zb
+onoremap z/ zb
 
 
 "" indent
+nnoremap > >>
+nnoremap < <<
+nnoremap g> >
+nnoremap g< <
 vnoremap > >gv
 vnoremap < <gv
 
@@ -277,16 +303,17 @@ cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
 
 
 "" custom normal, visual, operation pending
-"" nop
-nnoremap <C-f> <Nop>
 " nnoremap m <Nop>
 inoremap <C-x>s s
+
 
 "" add N
 nnoremap <C-p> <C-a>
 
+
 "" restore to the last write status
 nnoremap U :<C-u>earlier 1f<CR>
+
 
 "" insret new line．コメントは継続されず，移動もしない
 nnoremap gn :<C-u>call append(line('.'), '')<CR>
@@ -310,7 +337,9 @@ nnoremap <Leader>/ m'HVL<ESC>2<C-o>/\%V
 nnoremap <Leader>? m'HVL<ESC>2<C-o>?\%V
 nnoremap <Leader>* m'HVL<ESC>2<C-o>:<C-u>execute '/\%V' . expand('<cword>')<CR>
 nnoremap <Leader># m'HVL<ESC>2<C-o>:<C-u>execute '?\%V' . expand('<cword>')<CR>
-"" 2 chars search
+
+
+"" 2 chars search and jump
 function S_jump(num_char, dir, visual)
   nohlsearch
   let l:str = ""
@@ -338,33 +367,64 @@ onoremap <silent> s :<C-u>call S_jump(2, 1, 0)<CR>
 nnoremap <silent> S :<C-u>call S_jump(2, 0, 0)<CR>
 vnoremap <silent> S :<C-u>call S_jump(2, 0, 1)<CR>
 onoremap <silent> S :<C-u>call S_jump(2, 0, 0)<CR>
-
-
+"" jump with jumplist within file
+function! JumpWithinFile(back, forw)
+  let [n, i] = [bufnr('%'), 1]
+  let p = [n] + getpos('.')[1:]
+  sil! exe 'norm!1' . a:forw
+  while 1
+    let p1 = [bufnr('%')] + getpos('.')[1:]
+    if n == p1[0] | break | endif
+    if p == p1
+      sil! exe 'norm!' . (i-1) . a:back
+      break
+    endif
+    let [p, i] = [p1, i+1]
+    sil! exe 'norm!1' . a:forw
+  endwhile
+endfunction
+nnoremap <silent> <C-k> :call JumpWithinFile("\<C-i>", "\<C-o>")<cr>
+nnoremap <silent> <C-j> :call JumpWithinFile("\<C-o>", "\<C-i>")<cr>
 "" mark spot jump
 nnoremap ' `
-
+"" indent jump
+nnoremap ]i 0y^/^<C-R>0\_s\@!<CR>:<C-u>nohlsearch<CR>^
+vnoremap ]i <ESC>0y^gv/^<C-R>0\_s\@!<CR>
+nnoremap [i 0y^?^<C-R>0\_s\@!<CR>:<C-u>nohlsearch<CR>^
+vnoremap [i <ESC>0y^gv?^<C-R>0\_s\@!<CR>
 "" fold jump
-nnoremap [z zj
-nnoremap [Z zk
+nnoremap zj <Nop>
+nnoremap zk <Nop>
+nnoremap ]z zj
+nnoremap [z zk
+nnoremap ]Z ]z
+nnoremap [Z [z
+
 
 "" fold operation
 nnoremap zh zc
+nnoremap zH zC
 nnoremap zl zo
-nnoremap zk zC
-nnoremap zj zO
-nnoremap zx za
+nnoremap zL zO
+nnoremap ze zi
+nnoremap zb zf%
+nnoremap zi 0y^V/^<C-R>0\_s\@!<CR>kzf:<C-u>nohlsearch<CR>
+
 
 "" onetime insert mode
-nnoremap q i<Space><ESC>r
+" nnoremap q i<Space><ESC>r
 nnoremap <C-q> q
+
 
 "" repeat command
 nnoremap g. q:k<CR>
+
 
 "" command line window
 nnoremap c: q:
 nnoremap c/ q/
 nnoremap c? q?
+
 
 "" search and replace prefix
 nnoremap gr :<C-u>%s///g<Left><Left>
@@ -379,10 +439,12 @@ inoremap <C-g>n <C-o>:<C-u>call append(line('.'), '')<CR>
 inoremap <C-g>N <C-o>:<C-u>call append(line('.'), '')<CR>
 inoremap <C-t> <Left><C-o>"zx<Left><C-r>z<Right>
 inoremap <C-r><C-r> <C-r>*
+cnoremap <C-r><C-r> <C-r>*
 inoremap <C-y> <C-o>diw
 inoremap <A-f> <C-o>f
 inoremap <A-S-f> <C-o>F
-inoremap <C-]> <C-o>;
+inoremap <C-]> <C-o>,
+inoremap <C-[> <C-o>;
 inoremap <C-x>. <C-a>
 " cnoremap <C-x> <C-d>
 " inoremap <C-g> <C-o>w

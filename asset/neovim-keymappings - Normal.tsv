@@ -1,0 +1,105 @@
+  ＼ Prefix Key	-	Shift-	Ctrl-	g +	g + Shift-	g + Ctrl-	C-w	C-w + Shift-	Ctrl-w + Ctrl-	Leader +	Leader + Shift-	Leader + Ctrl-	z +	z + Shift-	z + Ctrl-	Z +	Z + Shift-	Z + Ctrl-	[ / ] +	[ / ] + Shift-	[ / ] + Ctrl-	d +	d + Shift-	d + Ctrl-	c +	c + Shift-	c + Ctrl-	t +	t + Shift	t + Ctrl-	y +	y + Shift-	y + Ctrl-	Alt +									
+a	[insert]	move & [insert]	BOS	ascii									fold:toggle	fold:toggleRecursively		:qa	:qa!					-> [opPend]			-> [opPend]			-> [opPend]			-> [opPend]												
+b	wordPrev	WORDPrev	prevBuffer				bufPrev			EM:word			fold:setBracket									-			-			-			-												
+c	-> [visSel]	del & [insert]	[Normal]				:tabnew			CAW:	CAW:								jump:change			DO:			-																		
+d	-> [visSel]	delLine	scrollDown	LSP:jumpDef	LSP:jumpDef		:bdelete						fold:delete	fold:deleteRecursively					jump:definition			-																					
+e	wordEnd	WORDEnd	EOS	wordEndPrev	WORDEndPrev								fold:toggleAll	fold:deleteAll								-			-			-			-											1	1
+f	-> EM:findCharNext	-> EM:findCharPrev	scrollDown	openFile			:bfirst			-> EM:findChar2Next	-> EM:findChar2Prev		fold:set									->	DO:		->			->			->											2	2
+g	->	jump:bottom	currentFile	jump:top						-> GG												->			->			->			->											3	
+h	move	jump:topOfScreen	:bprev		[select]	[select]	winMove	winSize					fold:close	fold:closeRecursively					GG:jump:hunk			DO:																				2	1.5
+i	[insert]	move & [insert]	<Tab>	jump & [insert]	move & [insert]								fold:setIndent						jump:indent	showLineW/Keyword		-> [opPend]			-> [opPend]			-> [opPend]			-> [opPend]												
+j	move	join	scrollDown	moveScreen	joinW/oSpace	screenDown	winMove	winSize														DN:jump																					
+k	move	lookup LSP:hover	scrollUp	moveScreen		screenUp	winMove	winSize																																			
+l	move	jump:bottomOfScreen	:bnext		LSP:showDiag		winMove	winSize			EM:line		fold:open	fold:openRecursively								DN:file/rec	DN:file/rec	DN:file/rec																			
+m		-> SI	<CR>	move:middleOfLine	wshada!														jump:methodStart	jump:methodEnd		DN:mark	SI:																				
+n	searchNext	searchPrev	FR:	NLNext	NLPrev		:tabnext					FR:										DN:buffer																					
+o	[insert]	[insert]	jump:jumpListPrev				winMove	winMove														DN:old	DN:old																				
+p	paste	paste	addN	paste	paste		:tabprev												pasteW/Indent			DN:old	DN:old																				
+q			macroRecord	-> [visSel]:format LSP:format	[ex]											:quit	:quit!																										
+r	repChar	[replace]	redo	(search &) rep	LSP:rename		winOp	winOp					LSP:fold	LSP:fold								DN:register																					
+s	EM:char	EM:2char	<ESC>	LSP:symbol	LSP:symbol		:split			EM:nchar									SI:jump:mark	SI:jump:mark		-			-	-		-	-		-	-											
+t	-> [visSel]	cutLine	jumpTagList?	:tabnext	tabPrev		tabCreate																					-															
+u	undo	lastWriteStatus	scrollUp	-> [visSel]:downcase	-> [visSel]:upcase		:winPrev																																				
+v	[visual]	[visual]	[visual]	[visual]:prevSelect	[visual]		:vsplit															DO:																					
+w	wordNext	WORDNext	->				DN:buffers		delWord	EM:word												-			-			-			-												
+x	delChar	delCharBackward	subtrN	NR:openApp			:close																																				
+y	-> [visSel]:yank	yank	scrollUp																												-												
+z	->	->	-> tmux										:upd			upd & quit	✗		jump:fold	jump:inFold																							
+<CR>	NL																																										
+<Tab>	jump:jumpListNext																																										
+<ESC>	[normal]																																										
+0	BOS			BOS																																							
+;	EM:repeatFSearchNext			jump:chgListNext																																							
+,	EM:repeatFsearchPrev			jump:chgListPrev									scroll:top																														
+.	repeatOp			repeatCom									scroll:middle																														
+`	-> jump:markSpot																																										
+[	->		<ESC>																jump:section																								
+]	->		LSP:jump:def																jump:section																								
+'	-> jump:markSpot																																										
+\	[com]:searchStrict						:vsplit																																				
+/	[com]:searchNext			[com]:searchCaseSensitive						searchHLOff			scroll:bottom									-			q/																		
+?		[com]:searchPrev																								q?																	
+:		[com]																								q:																	
+{}		jump:paragraph																																									
+()		jump:sentence																																									
+%		MI:jump:quote																		MI:																							
+"		-> chooseRegister																																									
+~		toggleCase			-> [visSel]:toggleCase																																						
+^		BOS			BOS																																						
+$		EOS			EOS																																						
+*		search								highlight																																	
+#		search																																									
+!																																											
+_		BOS			EOS			:split																																			
+@																																											
+&		repeatReplaceCom						:tabclose																																			
+|																																											
+<>		-> [visSel]:indent																																									
+=	-> [visSel]:indent						winSize																																				
++		jump:BOSNext																																									
+-	jump:BOSPrev												scroll:bottom																														
+Up	3k																																										
+Down	3j																																										
+				基本的にg-prefixは基本機能のplugin拡張だったり入れ替えで割当						基本的にLeader-prefixはplugin独自の機能に割当																																	
+																																											
+																																											
+使いやすいキーマップに使わない機能が割り当てられている																																											
+使いにくいキーマップに使う機能が割り当てられている																																											
+使いにくいキーマップに使わない機能が割り当てられている																																											
+カスタマイズ（カスタマイズ前後の機能が類似している場合を除く）																																											
+																																											
+																																											
+<Mode>																																											
+[normal]																																											
+[insert]																																											
+[visual]																																											
+[visSel]	visual select																																										
+[select]																																											
+[opPend]	operation pending																																										
+[replace]																																											
+[com]	command																																										
+[ex]																																											
+[terminal]																																											
+																																											
+<Plugin>																																											
+EM	easy motion																																										
+DO	deol																																										
+MI	Matchit(builtin)																																										
+SI	vim-signature																																										
+LSP	vim-lsp																																										
+DN	denite																																										
+FR	fern																																										
+NR	netrw(builtin)																																										
+																																											
+<Other Key Mappings>																																											
+q:	c:																																										
+q/	c/																																										
+q?	c?																																										
+==																																											
+gUU, guu																																											
+<<, >>																																											
+''																																											
+																																											
+<terms>																																											
+move	同一行内の移動or上下の隣接文字への移動																																										
+jump	moveより大移動が可能な機能																																										

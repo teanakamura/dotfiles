@@ -18,10 +18,10 @@ call submode#map('winsize', 'n', '', 'J', '<C-w>-')
 
 
 "" indent
-call submode#enter_with('indent', 'n', '', '>>', '>>')
-call submode#enter_with('indent', 'n', '', '<<', '<<')
-call submode#map('indent', 'n', '', '>', '>>')
-call submode#map('indent', 'n', '', '<', '<<')
+" call submode#enter_with('indent', 'n', '', '>>', '>>')
+" call submode#enter_with('indent', 'n', '', '<<', '<<')
+" call submode#map('indent', 'n', '', '>', '>>')
+" call submode#map('indent', 'n', '', '<', '<<')
 call submode#enter_with('i_indent', 'i', '', '<C-o>>', '<C-o>>>')
 call submode#enter_with('i_indent', 'i', '', '<C-o><', '<C-o><<')
 call submode#map('i_indent', 'i', '', '>', '<C-o>>>')
@@ -42,11 +42,18 @@ call submode#map('moveOnScreen', 'nv', '', 'j', 'gj')
 call submode#map('moveOnScreen', 'nv', '', 'k', 'gk')
 
 
+"" scroll up/down
+call submode#enter_with('scroll', 'nv', '', 'g<C-j>', '<C-y>')
+call submode#enter_with('scroll', 'nv', '', 'g<C-k>', '<C-e>')
+call submode#map('scroll', 'nv', '', '<C-j>', '<C-y>')
+call submode#map('scroll', 'nv', '', '<C-k>', '<C-e>')
+
+
 "" screen up/down
-call submode#enter_with('screenUpDown', 'nv', '', 'g<C-j>', '<C-e>j')
-call submode#enter_with('screenUpDown', 'nv', '', 'g<C-k>', '<C-y>k')
-call submode#map('screenUpDown', 'nv', '', '<C-j>', '<C-e>j')
-call submode#map('screenUpDown', 'nv', '', '<C-k>', '<C-y>k')
+call submode#enter_with('screenMove', 'nv', '', '<Leader><C-j>', '<C-e>j')
+call submode#enter_with('screenMove', 'nv', '', '<Leader><C-k>', '<C-y>k')
+call submode#map('screenMove', 'nv', '', '<C-j>', '<C-e>j')
+call submode#map('screenMove', 'nv', '', '<C-k>', '<C-y>k')
 
 
 "" delete word
@@ -69,25 +76,25 @@ call submode#map('sectionJump', 'n', '', '[', '[[z.')
 call submode#map('sectionJump', 'n', '', ']', ']]z.')
 
 
-"" fold jump
-call submode#enter_with('sectionJump', 'n', '', '[z', 'zj')
-call submode#enter_with('sectionJump', 'n', '', '[Z', 'zk')
-call submode#map('sectionJump', 'n', '', 'z', 'zjz.')
-call submode#map('sectionJump', 'n', '', 'Z', 'zkz.')
+" "" fold jump
+" call submode#enter_with('sectionJump', 'n', '', ']z', 'zj')
+" call submode#enter_with('sectionJump', 'n', '', '[z', 'zk')
+" call submode#map('sectionJump', 'n', '', ']', 'zjz.')
+" call submode#map('sectionJump', 'n', '', '[', 'zkz.')
 
 
 " "" mark jump (require vim-signature)
-" call submode#enter_with('markJump', 'n', '', '[m', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>')
-" call submode#enter_with('markJump', 'n', '', '[M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>')
-" call submode#map('markJump', 'n', '', 'm', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>z.')
-" call submode#map('markJump', 'n', '', 'M', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>z.')
+" call submode#enter_with('markJump', 'n', '', ']m', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>')
+" call submode#enter_with('markJump', 'n', '', '[m', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>')
+" call submode#map('markJump', 'n', '', ']', ':<C-u>call signature#mark#Goto("next", "spot", "pos")<CR>z.')
+" call submode#map('markJump', 'n', '', '[', ':<C-u>call signature#mark#Goto("prev", "spot", "pos")<CR>z.')
 
 
-"" git hunk jump (require vim-gitgutter)
-call submode#enter_with('hunkJump', 'n', '', '[h', ':<C-u>GitGutterNextHunk<CR>')
-call submode#enter_with('hunkJump', 'n', '', '[H', ':<C-u>GitGutterPrevHunk<CR>')
-call submode#map('hunkJump', 'n', '', 'h', ':<C-u>GitGutterNextHunk<CR>z.')
-call submode#map('hunkJump', 'n', '', 'H', ':<C-u>GitGutterPrevHunk<CR>z.')
+" "" git hunk jump (require vim-gitgutter)
+" call submode#enter_with('hunkJump', 'n', '', ']h', ':<C-u>GitGutterNextHunk<CR>')
+" call submode#enter_with('hunkJump', 'n', '', '[h', ':<C-u>GitGutterPrevHunk<CR>')
+" call submode#map('hunkJump', 'n', '', ']', ':<C-u>GitGutterNextHunk<CR>z.')
+" call submode#map('hunkJump', 'n', '', '[', ':<C-u>GitGutterPrevHunk<CR>z.')
 
 
 "" grep jump (require denite)
@@ -98,13 +105,13 @@ call submode#map('grepJump', 'n', '', 'N', ':<C-u>Denite -resume -buffer-name=gr
 
 
 "" insert mode scroll
-call submode#enter_with('i_scroll', 'i', '', '<C-o><C-j>', '<C-o><C-y>')
-call submode#enter_with('i_scroll', 'i', '', '<C-o><C-k>', '<C-o><C-e>')
+call submode#enter_with('i_scroll', 'i', '', '<C-o>g<C-j>', '<C-o><C-y>')
+call submode#enter_with('i_scroll', 'i', '', '<C-o>g<C-k>', '<C-o><C-e>')
 call submode#map('i_scroll', 'i', '', '<C-j>', '<C-o><C-y>')
 call submode#map('i_scroll', 'i', '', '<C-k>', '<C-o><C-e>')
 
 
-"" insret mode move
+"" insert mode move
 call submode#enter_with('i_omove', 'i', '', '<C-o>j', '<C-o>j')
 call submode#enter_with('i_omove', 'i', '', '<C-o>k', '<C-o>k')
 call submode#map('i_omove', 'i', '', 'j', '<C-o>j')

@@ -2,10 +2,12 @@ set signcolumn=yes
 set updatetime=1000
 
 nmap [c <Nop>
-if dein#check_install('vim-submode') != 0
-  nmap [h <Plug>(GitGutterNextHunk)
-  nmap [H <Plug>(GitGutterPrevHunk)
-endif
+" if dein#check_install('vim-submode') != 0
+"   nmap ]h <Plug>(GitGutterNextHunk)
+"   nmap [h <Plug>(GitGutterPrevHunk)
+" endif
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 
 nmap <Leader>gs <Plug>(GitGutterStageHunk)
 nmap <Leader>gu <Plug>(GitGutterUndoHunk)
