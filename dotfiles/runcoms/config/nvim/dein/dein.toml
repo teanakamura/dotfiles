@@ -24,3 +24,10 @@ hook_add = 'source ~/.config/nvim/plugins/deol.vim'
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = 'source ~/.config/nvim/plugins/caw.vim'
+
+[[plugins]]
+repo = 'zefei/vim-wintabs'
+hook_add = 'source ~/.config/nvim/plugins/vim-wintabs.vim'
+
+[[plugins]]
+repo = 'zefei/vim-wintabs-powerline'
