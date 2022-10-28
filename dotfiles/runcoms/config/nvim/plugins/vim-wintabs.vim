@@ -7,3 +7,5 @@ map [window]x <Plug>(wintabs_close_window)
 map [window]z <Plug>(wintabs_only_window)
 command! Tabc WintabsCloseVimtab
 command! Tabo WintabsOnlyVimtab
+
+autocmd VimEnter * call wintabs#all_buffers()
