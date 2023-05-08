@@ -42,8 +42,10 @@ set expandtab
 set tabstop=2
 set softtabstop=-1
 set shiftwidth=2
+""indent設定はfiletype indentで上書きされうるので注意
+""（:edit $VIMRUNTIME/ftplugin）
 set autoindent
-set smartindent  ""filetype indentで上書きされるので意味ない
+set nosmartindent
 "set cindent
 
 "----------------------------
@@ -417,6 +419,7 @@ nnoremap zi 0y^V/^<C-R>0\_s\@!<CR>kzf:<C-u>nohlsearch<CR>
 
 "" onetime insert mode
 " nnoremap q i<Space><ESC>r
+nnoremap q <Nop>
 nnoremap <C-q> q
 
 
@@ -475,3 +478,21 @@ augroup MyQuickFix
   autocmd!
   autocmd FileType qf call s:configure_quickfix()
 augroup END
+
+
+"" surroundings
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap () ()<Left>
+inoremap [] []<Left>
+inoremap {} {}<Left>
+vnoremap " c""<ESC>P
+vnoremap ' c''<ESC>P
+vnoremap ( c()<ESC>P
+vnoremap [ c[]<ESC>P
+vnoremap { c{}<ESC>P
