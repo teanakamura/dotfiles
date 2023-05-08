@@ -231,7 +231,8 @@ let s:menus = {}
 let s:menus.competitive_programming = {'description': 'utils'}
 let s:menus.competitive_programming.file_candidates = [
     \ ['algorithms', '~/Excercise/AtCoder/algorithms'],
-    \ ['template', '~/.config/nvim/template/cpp']
+    \ ['template', '~/.config/nvim/template/cpp'],
+    \ ['snippet', '~/.config/nvim/snippet']
   \ ]
 let s:menus.zsh = {'description': 'Edit your import zsh configuration'}
 let s:menus.zsh.file_candidates = [

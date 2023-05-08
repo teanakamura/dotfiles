@@ -31,3 +31,10 @@ hook_add = 'source ~/.config/nvim/plugins/vim-wintabs.vim'
 
 [[plugins]]
 repo = 'zefei/vim-wintabs-powerline'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+hook_add = 'source ~/.config/nvim/plugins/vim-vsnip.vim'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip-integ'

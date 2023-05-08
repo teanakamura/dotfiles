@@ -1,0 +1,8 @@
+{
+  "ipy": {
+    "prefix": "ipy",
+    "body": [
+      "print('$0'); from IPython import embed; embed()"
+    ]
+  }
+}
