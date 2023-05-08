@@ -5,7 +5,7 @@ set mouse=a
 set noswapfile
 set splitright
 set splitbelow
-set clipboard+=unnamed
+set clipboard^=unnamedplus
 " swapfileが存在するときに自動的にreadonlyで開く
 augroup swapchoice-readonly
   autocmd!
