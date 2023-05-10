@@ -24,3 +24,7 @@ prompt damoekri
 PROMPT='%F{038}[${HOST:0:4}] %~
 %f${editor_info[keymap]} '
 
+if [[ -t 0 ]]; then
+  stty stop undef
+  stty start undef
+fi
